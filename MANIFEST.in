@@ -1,0 +1,12 @@
+include __init__.py api.py stability.py version.py
+include README.md LICENSE CHANGELOG.md CONTRIBUTING.md SECURITY.md
+include requirements.txt pyproject.toml
+recursive-include nodes *.py
+recursive-include prompts *.py
+recursive-include tasks *.py
+recursive-include utils *.py
+recursive-include web *.js *.md
+recursive-include example_workflows *.json *.jpg
+recursive-include subgraphs *.json
+recursive-include docs *.md
+prune tests

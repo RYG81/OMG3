@@ -1,0 +1,389 @@
+{
+  "revision": 0,
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "eeaa26f0-80ed-5637-8c50-b457d48aa4de",
+      "pos": [
+        400,
+        300
+      ],
+      "size": [
+        340,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "shot_list",
+          "localized_name": "shot_list",
+          "name": "shot_list",
+          "type": "OMG_SHOT_LIST",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "first_frame",
+          "localized_name": "first_frame_prompt",
+          "name": "first_frame_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "video_prompt",
+          "localized_name": "video_prompt",
+          "name": "video_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "last_frame",
+          "localized_name": "last_frame_prompt",
+          "name": "last_frame_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "negative",
+          "localized_name": "negative_prompt",
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "locks",
+          "localized_name": "continuity_locks",
+          "name": "continuity_locks",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "proxyWidgets": [
+          [
+            "10",
+            "shot_index"
+          ]
+        ],
+        "cnr_id": "comfy-omg",
+        "ver": "0.1.0"
+      },
+      "widgets_values": [
+        1
+      ],
+      "title": "OMG Shot Prompt Extractor"
+    }
+  ],
+  "links": [],
+  "version": 0.4,
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "eeaa26f0-80ed-5637-8c50-b457d48aa4de",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 10,
+          "lastLinkId": 6,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "OMG Shot Prompt Extractor",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            0,
+            100,
+            120,
+            60
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            960,
+            100,
+            120,
+            150
+          ]
+        },
+        "inputs": [
+          {
+            "id": "b62a8737-5470-59fd-914e-bb8d870542c2",
+            "name": "shot_list",
+            "type": "OMG_SHOT_LIST",
+            "linkIds": [
+              1
+            ],
+            "localized_name": "shot_list",
+            "label": "shot_list",
+            "pos": [
+              100,
+              140
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "8f994c86-b72c-58bc-a084-a47a154c5303",
+            "name": "first_frame_prompt",
+            "type": "STRING",
+            "linkIds": [
+              2
+            ],
+            "localized_name": "first_frame_prompt",
+            "label": "first_frame",
+            "pos": [
+              980,
+              140
+            ]
+          },
+          {
+            "id": "28877f96-df9c-568d-9a8b-44066ffddc61",
+            "name": "video_prompt",
+            "type": "STRING",
+            "linkIds": [
+              3
+            ],
+            "localized_name": "video_prompt",
+            "label": "video_prompt",
+            "pos": [
+              980,
+              170
+            ]
+          },
+          {
+            "id": "77df421d-4b42-5e6c-b15f-50d07654ec1a",
+            "name": "last_frame_prompt",
+            "type": "STRING",
+            "linkIds": [
+              4
+            ],
+            "localized_name": "last_frame_prompt",
+            "label": "last_frame",
+            "pos": [
+              980,
+              200
+            ]
+          },
+          {
+            "id": "6b2ee8da-1db7-518e-b77e-57845e12e146",
+            "name": "negative_prompt",
+            "type": "STRING",
+            "linkIds": [
+              5
+            ],
+            "localized_name": "negative_prompt",
+            "label": "negative",
+            "pos": [
+              980,
+              230
+            ]
+          },
+          {
+            "id": "1572d593-c9af-554f-a299-cd895b13dd71",
+            "name": "continuity_locks",
+            "type": "STRING",
+            "linkIds": [
+              6
+            ],
+            "localized_name": "continuity_locks",
+            "label": "locks",
+            "pos": [
+              980,
+              260
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 10,
+            "type": "OllamaShotListGetShot",
+            "pos": [
+              350,
+              80
+            ],
+            "size": [
+              420,
+              360
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "shot_list",
+                "localized_name": "shot_list",
+                "name": "shot_list",
+                "type": "OMG_SHOT_LIST",
+                "link": 1
+              },
+              {
+                "label": "shot_index",
+                "localized_name": "shot_index",
+                "name": "shot_index",
+                "type": "INT",
+                "link": null,
+                "widget": {
+                  "name": "shot_index"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "shot_id",
+                "name": "shot_id",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "duration_seconds",
+                "name": "duration_seconds",
+                "type": "FLOAT",
+                "links": null
+              },
+              {
+                "localized_name": "purpose",
+                "name": "purpose",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "first_frame_prompt",
+                "name": "first_frame_prompt",
+                "type": "STRING",
+                "links": [
+                  2
+                ]
+              },
+              {
+                "localized_name": "video_prompt",
+                "name": "video_prompt",
+                "type": "STRING",
+                "links": [
+                  3
+                ]
+              },
+              {
+                "localized_name": "last_frame_prompt",
+                "name": "last_frame_prompt",
+                "type": "STRING",
+                "links": [
+                  4
+                ]
+              },
+              {
+                "localized_name": "negative_prompt",
+                "name": "negative_prompt",
+                "type": "STRING",
+                "links": [
+                  5
+                ]
+              },
+              {
+                "localized_name": "camera_direction",
+                "name": "camera_direction",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "lighting",
+                "name": "lighting",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "continuity_locks",
+                "name": "continuity_locks",
+                "type": "STRING",
+                "links": [
+                  6
+                ]
+              },
+              {
+                "localized_name": "shot_json",
+                "name": "shot_json",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "OllamaShotListGetShot",
+              "cnr_id": "comfy-omg",
+              "ver": "0.1.0"
+            },
+            "widgets_values": [
+              1
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": 1,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 10,
+            "target_slot": 0,
+            "type": "OMG_SHOT_LIST"
+          },
+          {
+            "id": 2,
+            "origin_id": 10,
+            "origin_slot": 3,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "STRING"
+          },
+          {
+            "id": 3,
+            "origin_id": 10,
+            "origin_slot": 4,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 4,
+            "origin_id": 10,
+            "origin_slot": 5,
+            "target_id": -20,
+            "target_slot": 2,
+            "type": "STRING"
+          },
+          {
+            "id": 5,
+            "origin_id": 10,
+            "origin_slot": 6,
+            "target_id": -20,
+            "target_slot": 3,
+            "type": "STRING"
+          },
+          {
+            "id": 6,
+            "origin_id": 10,
+            "origin_slot": 9,
+            "target_id": -20,
+            "target_slot": 4,
+            "type": "STRING"
+          }
+        ],
+        "groups": [],
+        "extra": {
+          "workflowRendererVersion": "LG"
+        },
+        "category": "ComfyUI-OMG/Blueprints",
+        "description": "Extract one shot from a typed Shot List for image/video generation."
+      }
+    ]
+  },
+  "extra": {
+    "workflowRendererVersion": "LG"
+  }
+}

@@ -1,0 +1,462 @@
+{
+  "revision": 0,
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "c409af16-2a74-5806-9183-622b30db6a76",
+      "pos": [
+        400,
+        300
+      ],
+      "size": [
+        340,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "ollama_model",
+          "localized_name": "ollama_model",
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": null
+        },
+        {
+          "label": "prompt",
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "evaluation",
+          "localized_name": "evaluation",
+          "name": "evaluation",
+          "type": "OMG_EVALUATION",
+          "links": []
+        },
+        {
+          "label": "score",
+          "localized_name": "overall_score",
+          "name": "overall_score",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "label": "verdict",
+          "localized_name": "verdict",
+          "name": "verdict",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "improved_prompt",
+          "localized_name": "improved_prompt",
+          "name": "improved_prompt",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "proxyWidgets": [
+          [
+            "10",
+            "target_model"
+          ],
+          [
+            "10",
+            "evaluation_focus"
+          ]
+        ],
+        "cnr_id": "comfy-omg",
+        "ver": "0.1.0"
+      },
+      "widgets_values": [
+        "General",
+        "balanced"
+      ],
+      "title": "OMG Prompt Evaluation"
+    }
+  ],
+  "links": [],
+  "version": 0.4,
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "c409af16-2a74-5806-9183-622b30db6a76",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 10,
+          "lastLinkId": 6,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "OMG Prompt Evaluation",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            0,
+            100,
+            120,
+            60
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            960,
+            100,
+            120,
+            120
+          ]
+        },
+        "inputs": [
+          {
+            "id": "328b5c0b-2b33-59c6-8261-3ed98ce03eeb",
+            "name": "ollama_model",
+            "type": "OLLAMA_MODEL",
+            "linkIds": [
+              1
+            ],
+            "localized_name": "ollama_model",
+            "label": "ollama_model",
+            "pos": [
+              100,
+              140
+            ]
+          },
+          {
+            "id": "210c3209-63d2-5ca2-b82b-ef449b3e6f87",
+            "name": "prompt",
+            "type": "STRING",
+            "linkIds": [
+              2
+            ],
+            "localized_name": "prompt",
+            "label": "prompt",
+            "pos": [
+              100,
+              170
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "1036025b-6584-50dc-be98-cada46b4ca08",
+            "name": "evaluation",
+            "type": "OMG_EVALUATION",
+            "linkIds": [
+              3
+            ],
+            "localized_name": "evaluation",
+            "label": "evaluation",
+            "pos": [
+              980,
+              140
+            ]
+          },
+          {
+            "id": "7902485f-5423-5e9d-b958-2c04c2609621",
+            "name": "overall_score",
+            "type": "FLOAT",
+            "linkIds": [
+              4
+            ],
+            "localized_name": "overall_score",
+            "label": "score",
+            "pos": [
+              980,
+              170
+            ]
+          },
+          {
+            "id": "55017cbc-4395-581f-8b00-c1175ed317f4",
+            "name": "verdict",
+            "type": "STRING",
+            "linkIds": [
+              5
+            ],
+            "localized_name": "verdict",
+            "label": "verdict",
+            "pos": [
+              980,
+              200
+            ]
+          },
+          {
+            "id": "57c27af3-ff26-5971-9650-729ca9571942",
+            "name": "improved_prompt",
+            "type": "STRING",
+            "linkIds": [
+              6
+            ],
+            "localized_name": "improved_prompt",
+            "label": "improved_prompt",
+            "pos": [
+              980,
+              230
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 10,
+            "type": "OllamaPromptEvaluator",
+            "pos": [
+              350,
+              80
+            ],
+            "size": [
+              420,
+              360
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "ollama_model",
+                "localized_name": "ollama_model",
+                "name": "ollama_model",
+                "type": "OLLAMA_MODEL",
+                "link": 1
+              },
+              {
+                "label": "prompt",
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "link": 2,
+                "widget": {
+                  "name": "prompt"
+                }
+              },
+              {
+                "label": "target_model",
+                "localized_name": "target_model",
+                "name": "target_model",
+                "type": "COMBO",
+                "link": null,
+                "widget": {
+                  "name": "target_model"
+                }
+              },
+              {
+                "label": "intended_result",
+                "localized_name": "intended_result",
+                "name": "intended_result",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "intended_result"
+                }
+              },
+              {
+                "label": "evaluation_focus",
+                "localized_name": "evaluation_focus",
+                "name": "evaluation_focus",
+                "type": "COMBO",
+                "link": null,
+                "widget": {
+                  "name": "evaluation_focus"
+                }
+              },
+              {
+                "label": "creative_brief",
+                "localized_name": "creative_brief",
+                "name": "creative_brief",
+                "type": "OMG_CREATIVE_BRIEF",
+                "link": null,
+                "shape": 7
+              },
+              {
+                "label": "character_bible",
+                "localized_name": "character_bible",
+                "name": "character_bible",
+                "type": "OMG_CHARACTER_BIBLE",
+                "link": null,
+                "shape": 7
+              },
+              {
+                "label": "world_bible",
+                "localized_name": "world_bible",
+                "name": "world_bible",
+                "type": "OMG_WORLD_BIBLE",
+                "link": null,
+                "shape": 7
+              },
+              {
+                "label": "shot_list",
+                "localized_name": "shot_list",
+                "name": "shot_list",
+                "type": "OMG_SHOT_LIST",
+                "link": null,
+                "shape": 7
+              },
+              {
+                "label": "cache_policy",
+                "localized_name": "cache_policy",
+                "name": "cache_policy",
+                "type": "COMBO",
+                "link": null,
+                "widget": {
+                  "name": "cache_policy"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "evaluation",
+                "name": "evaluation",
+                "type": "OMG_EVALUATION",
+                "links": [
+                  3
+                ]
+              },
+              {
+                "localized_name": "evaluation_json",
+                "name": "evaluation_json",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "overall_score",
+                "name": "overall_score",
+                "type": "FLOAT",
+                "links": [
+                  4
+                ]
+              },
+              {
+                "localized_name": "verdict",
+                "name": "verdict",
+                "type": "STRING",
+                "links": [
+                  5
+                ]
+              },
+              {
+                "localized_name": "strengths",
+                "name": "strengths",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "issues_json",
+                "name": "issues_json",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "improved_prompt",
+                "name": "improved_prompt",
+                "type": "STRING",
+                "links": [
+                  6
+                ]
+              },
+              {
+                "localized_name": "is_valid",
+                "name": "is_valid",
+                "type": "BOOLEAN",
+                "links": null
+              },
+              {
+                "localized_name": "validation_report",
+                "name": "validation_report",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "provenance_json",
+                "name": "provenance_json",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "OllamaPromptEvaluator",
+              "cnr_id": "comfy-omg",
+              "ver": "0.1.0"
+            },
+            "widgets_values": [
+              "",
+              "General",
+              "",
+              "balanced",
+              "use"
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": 1,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 10,
+            "target_slot": 0,
+            "type": "OLLAMA_MODEL"
+          },
+          {
+            "id": 2,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 10,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 3,
+            "origin_id": 10,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "OMG_EVALUATION"
+          },
+          {
+            "id": 4,
+            "origin_id": 10,
+            "origin_slot": 2,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "FLOAT"
+          },
+          {
+            "id": 5,
+            "origin_id": 10,
+            "origin_slot": 3,
+            "target_id": -20,
+            "target_slot": 2,
+            "type": "STRING"
+          },
+          {
+            "id": 6,
+            "origin_id": 10,
+            "origin_slot": 6,
+            "target_id": -20,
+            "target_slot": 3,
+            "type": "STRING"
+          }
+        ],
+        "groups": [],
+        "extra": {
+          "workflowRendererVersion": "LG"
+        },
+        "category": "ComfyUI-OMG/Blueprints",
+        "description": "Evaluate a prompt and expose normalized score, verdict, issues, and improved prompt."
+      }
+    ]
+  },
+  "extra": {
+    "workflowRendererVersion": "LG"
+  }
+}

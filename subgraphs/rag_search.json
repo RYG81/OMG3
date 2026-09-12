@@ -1,0 +1,394 @@
+{
+  "revision": 0,
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ce829fad-1f32-5d72-957d-2675627104b8",
+      "pos": [
+        400,
+        300
+      ],
+      "size": [
+        340,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "ollama_model",
+          "localized_name": "ollama_model",
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": null
+        },
+        {
+          "label": "rag_index",
+          "localized_name": "rag_index",
+          "name": "rag_index",
+          "type": "OMG_RAG_INDEX",
+          "link": null
+        },
+        {
+          "label": "query",
+          "localized_name": "query",
+          "name": "query",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "context",
+          "localized_name": "context",
+          "name": "context",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "citations",
+          "localized_name": "citations_json",
+          "name": "citations_json",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "count",
+          "localized_name": "result_count",
+          "name": "result_count",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "proxyWidgets": [
+          [
+            "10",
+            "top_k"
+          ],
+          [
+            "10",
+            "minimum_score"
+          ]
+        ],
+        "cnr_id": "comfy-omg",
+        "ver": "0.1.0"
+      },
+      "widgets_values": [
+        5,
+        0.0
+      ],
+      "title": "OMG Local RAG Search"
+    }
+  ],
+  "links": [],
+  "version": 0.4,
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "ce829fad-1f32-5d72-957d-2675627104b8",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 10,
+          "lastLinkId": 6,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "OMG Local RAG Search",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            0,
+            100,
+            120,
+            90
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            960,
+            100,
+            120,
+            90
+          ]
+        },
+        "inputs": [
+          {
+            "id": "286d5a1b-e0d6-5c60-b9b7-e72a46e92a42",
+            "name": "ollama_model",
+            "type": "OLLAMA_MODEL",
+            "linkIds": [
+              1
+            ],
+            "localized_name": "ollama_model",
+            "label": "ollama_model",
+            "pos": [
+              100,
+              140
+            ]
+          },
+          {
+            "id": "0c6806d6-0d8b-546a-907c-46b13ce0650e",
+            "name": "rag_index",
+            "type": "OMG_RAG_INDEX",
+            "linkIds": [
+              2
+            ],
+            "localized_name": "rag_index",
+            "label": "rag_index",
+            "pos": [
+              100,
+              170
+            ]
+          },
+          {
+            "id": "ea0630b8-261d-5f91-b569-a4646b515912",
+            "name": "query",
+            "type": "STRING",
+            "linkIds": [
+              3
+            ],
+            "localized_name": "query",
+            "label": "query",
+            "pos": [
+              100,
+              200
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "ad09f857-ba0a-5d65-a0b1-7e0dbc71e47e",
+            "name": "context",
+            "type": "STRING",
+            "linkIds": [
+              4
+            ],
+            "localized_name": "context",
+            "label": "context",
+            "pos": [
+              980,
+              140
+            ]
+          },
+          {
+            "id": "09c5ac75-0ac5-5018-94e7-8b7f2f4d4920",
+            "name": "citations_json",
+            "type": "STRING",
+            "linkIds": [
+              5
+            ],
+            "localized_name": "citations_json",
+            "label": "citations",
+            "pos": [
+              980,
+              170
+            ]
+          },
+          {
+            "id": "5568db82-ab48-58eb-9151-52b2fa22147d",
+            "name": "result_count",
+            "type": "INT",
+            "linkIds": [
+              6
+            ],
+            "localized_name": "result_count",
+            "label": "count",
+            "pos": [
+              980,
+              200
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 10,
+            "type": "OllamaRAGSearch",
+            "pos": [
+              350,
+              80
+            ],
+            "size": [
+              420,
+              360
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "ollama_model",
+                "localized_name": "ollama_model",
+                "name": "ollama_model",
+                "type": "OLLAMA_MODEL",
+                "link": 1
+              },
+              {
+                "label": "rag_index",
+                "localized_name": "rag_index",
+                "name": "rag_index",
+                "type": "OMG_RAG_INDEX",
+                "link": 2
+              },
+              {
+                "label": "query",
+                "localized_name": "query",
+                "name": "query",
+                "type": "STRING",
+                "link": 3,
+                "widget": {
+                  "name": "query"
+                }
+              },
+              {
+                "label": "top_k",
+                "localized_name": "top_k",
+                "name": "top_k",
+                "type": "INT",
+                "link": null,
+                "widget": {
+                  "name": "top_k"
+                }
+              },
+              {
+                "label": "minimum_score",
+                "localized_name": "minimum_score",
+                "name": "minimum_score",
+                "type": "FLOAT",
+                "link": null,
+                "widget": {
+                  "name": "minimum_score"
+                }
+              },
+              {
+                "label": "max_context_characters",
+                "localized_name": "max_context_characters",
+                "name": "max_context_characters",
+                "type": "INT",
+                "link": null,
+                "widget": {
+                  "name": "max_context_characters"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "context",
+                "name": "context",
+                "type": "STRING",
+                "links": [
+                  4
+                ]
+              },
+              {
+                "localized_name": "citations_json",
+                "name": "citations_json",
+                "type": "STRING",
+                "links": [
+                  5
+                ]
+              },
+              {
+                "localized_name": "scores",
+                "name": "scores",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "result_count",
+                "name": "result_count",
+                "type": "INT",
+                "links": [
+                  6
+                ]
+              },
+              {
+                "localized_name": "top_source",
+                "name": "top_source",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "OllamaRAGSearch",
+              "cnr_id": "comfy-omg",
+              "ver": "0.1.0"
+            },
+            "widgets_values": [
+              "",
+              5,
+              0.0,
+              12000
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": 1,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 10,
+            "target_slot": 0,
+            "type": "OLLAMA_MODEL"
+          },
+          {
+            "id": 2,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 10,
+            "target_slot": 1,
+            "type": "OMG_RAG_INDEX"
+          },
+          {
+            "id": 3,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 10,
+            "target_slot": 2,
+            "type": "STRING"
+          },
+          {
+            "id": 4,
+            "origin_id": 10,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "STRING"
+          },
+          {
+            "id": 5,
+            "origin_id": 10,
+            "origin_slot": 1,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 6,
+            "origin_id": 10,
+            "origin_slot": 3,
+            "target_id": -20,
+            "target_slot": 2,
+            "type": "INT"
+          }
+        ],
+        "groups": [],
+        "extra": {
+          "workflowRendererVersion": "LG"
+        },
+        "category": "ComfyUI-OMG/Blueprints",
+        "description": "Retrieve local context and citations from a typed RAG index."
+      }
+    ]
+  },
+  "extra": {
+    "workflowRendererVersion": "LG"
+  }
+}

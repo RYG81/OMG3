@@ -1,0 +1,369 @@
+{
+  "revision": 0,
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "627fdfc5-d289-5206-b45e-53598c1cc82b",
+      "pos": [
+        400,
+        300
+      ],
+      "size": [
+        340,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "character_bible",
+          "localized_name": "character_bible",
+          "name": "character_bible",
+          "type": "OMG_CHARACTER_BIBLE",
+          "link": null
+        },
+        {
+          "label": "scene_context",
+          "localized_name": "scene_context",
+          "name": "scene_context",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "positive_prompt",
+          "localized_name": "positive_prompt",
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "negative_prompt",
+          "localized_name": "negative_prompt",
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "label": "continuity_locks",
+          "localized_name": "continuity_locks",
+          "name": "continuity_locks",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "proxyWidgets": [
+          [
+            "10",
+            "target_model"
+          ]
+        ],
+        "cnr_id": "comfy-omg",
+        "ver": "0.1.0"
+      },
+      "widgets_values": [
+        "General"
+      ],
+      "title": "OMG Character Bible Prompt"
+    }
+  ],
+  "links": [],
+  "version": 0.4,
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "627fdfc5-d289-5206-b45e-53598c1cc82b",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 10,
+          "lastLinkId": 5,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "OMG Character Bible Prompt",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            0,
+            100,
+            120,
+            60
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            960,
+            100,
+            120,
+            90
+          ]
+        },
+        "inputs": [
+          {
+            "id": "7db7dea6-340f-578b-826f-b0906b7577a7",
+            "name": "character_bible",
+            "type": "OMG_CHARACTER_BIBLE",
+            "linkIds": [
+              1
+            ],
+            "localized_name": "character_bible",
+            "label": "character_bible",
+            "pos": [
+              100,
+              140
+            ]
+          },
+          {
+            "id": "cf8d524a-6298-5f01-9e6e-8be54608cdc4",
+            "name": "scene_context",
+            "type": "STRING",
+            "linkIds": [
+              2
+            ],
+            "localized_name": "scene_context",
+            "label": "scene_context",
+            "pos": [
+              100,
+              170
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "bd9743c2-30dd-5226-bf82-32302bb3a8f7",
+            "name": "positive_prompt",
+            "type": "STRING",
+            "linkIds": [
+              3
+            ],
+            "localized_name": "positive_prompt",
+            "label": "positive_prompt",
+            "pos": [
+              980,
+              140
+            ]
+          },
+          {
+            "id": "dec3f5f6-74eb-57b5-8563-a8170dcabd0d",
+            "name": "negative_prompt",
+            "type": "STRING",
+            "linkIds": [
+              4
+            ],
+            "localized_name": "negative_prompt",
+            "label": "negative_prompt",
+            "pos": [
+              980,
+              170
+            ]
+          },
+          {
+            "id": "5069a203-094f-5483-ba8f-f5f849d7b0bd",
+            "name": "continuity_locks",
+            "type": "STRING",
+            "linkIds": [
+              5
+            ],
+            "localized_name": "continuity_locks",
+            "label": "continuity_locks",
+            "pos": [
+              980,
+              200
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 10,
+            "type": "OllamaCharacterBibleToPrompt",
+            "pos": [
+              350,
+              80
+            ],
+            "size": [
+              420,
+              360
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "character_bible",
+                "localized_name": "character_bible",
+                "name": "character_bible",
+                "type": "OMG_CHARACTER_BIBLE",
+                "link": 1
+              },
+              {
+                "label": "target_model",
+                "localized_name": "target_model",
+                "name": "target_model",
+                "type": "COMBO",
+                "link": null,
+                "widget": {
+                  "name": "target_model"
+                }
+              },
+              {
+                "label": "scene_context",
+                "localized_name": "scene_context",
+                "name": "scene_context",
+                "type": "STRING",
+                "link": 2,
+                "widget": {
+                  "name": "scene_context"
+                }
+              },
+              {
+                "label": "outfit_override",
+                "localized_name": "outfit_override",
+                "name": "outfit_override",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "outfit_override"
+                }
+              },
+              {
+                "label": "pose_action",
+                "localized_name": "pose_action",
+                "name": "pose_action",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "pose_action"
+                }
+              },
+              {
+                "label": "expression",
+                "localized_name": "expression",
+                "name": "expression",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "expression"
+                }
+              },
+              {
+                "label": "extra_instructions",
+                "localized_name": "extra_instructions",
+                "name": "extra_instructions",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "extra_instructions"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "positive_prompt",
+                "name": "positive_prompt",
+                "type": "STRING",
+                "links": [
+                  3
+                ]
+              },
+              {
+                "localized_name": "negative_prompt",
+                "name": "negative_prompt",
+                "type": "STRING",
+                "links": [
+                  4
+                ]
+              },
+              {
+                "localized_name": "continuity_locks",
+                "name": "continuity_locks",
+                "type": "STRING",
+                "links": [
+                  5
+                ]
+              },
+              {
+                "localized_name": "bible_json",
+                "name": "bible_json",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "OllamaCharacterBibleToPrompt",
+              "cnr_id": "comfy-omg",
+              "ver": "0.1.0"
+            },
+            "widgets_values": [
+              "General",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": 1,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 10,
+            "target_slot": 0,
+            "type": "OMG_CHARACTER_BIBLE"
+          },
+          {
+            "id": 2,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 10,
+            "target_slot": 2,
+            "type": "STRING"
+          },
+          {
+            "id": 3,
+            "origin_id": 10,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "STRING"
+          },
+          {
+            "id": 4,
+            "origin_id": 10,
+            "origin_slot": 1,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 5,
+            "origin_id": 10,
+            "origin_slot": 2,
+            "target_id": -20,
+            "target_slot": 2,
+            "type": "STRING"
+          }
+        ],
+        "groups": [],
+        "extra": {
+          "workflowRendererVersion": "LG"
+        },
+        "category": "ComfyUI-OMG/Blueprints",
+        "description": "Compile a Character Bible into a target prompt with scene context."
+      }
+    ]
+  },
+  "extra": {
+    "workflowRendererVersion": "LG"
+  }
+}
