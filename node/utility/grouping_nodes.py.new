@@ -1,0 +1,345 @@
+"""
+OMG Advanced Grouping Nodes - More advanced than rgthree group/context
+Organized categories:
+- ComfyUI-OMG2/Utility/Grouping: Bundle, Unbundle, Merge, Switch, Flow Context Create/Update/Get/ToPrompt
+- ComfyUI-OMG2/Utility/Flow: Gate, Trigger, Sequencer, Barrier for enable/disable group flow like image->video
+"""
+
+from __future__ import annotations
+import json
+import logging
+from typing import Dict, Any
+
+_log = logging.getLogger(__name__)
+
+class OMGFlowContextCreate:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "create_context"
+    RETURN_TYPES = ("OMG_FLOW_CONTEXT", "STRING")
+    RETURN_NAMES = ("flow_context", "context_json")
+    def create_context(self, concept: str, **kwargs):
+        context = {"concept": concept, "type": "OMG_FLOW_CONTEXT", "version": "1.0"}
+        for k in ["positive_prompt", "negative_prompt", "shot_plan", "motion_notes", "model_settings", "bible_json", "storyboard_json", "character_reference", "continuity_checklist", "h3_json", "preset_json", "enhanced_prompt", "fal_preset_id", "small_model_mode", "use_clip_fallback", "duration", "aspect_ratio"]:
+            v = kwargs.get(k)
+            if v not in (None, "", []):
+                context[k] = v
+        for k in ["world_bible", "character_bible", "shot_list", "image_ref_1", "image_ref_2", "image_ref_3", "clip", "ollama_model"]:
+            v = kwargs.get(k)
+            if v is not None:
+                context[k] = v
+        json_safe = {k: (f"<{type(v).__name__}>" if k in ["image_ref_1","image_ref_2","image_ref_3","clip","ollama_model","world_bible","character_bible","shot_list"] else v) for k,v in context.items()}
+        return (context, json.dumps(json_safe, indent=2))
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"concept": ("STRING", {"default": "chai rain Mumbai", "multiline": True})},
+            "optional": {
+                "positive_prompt": ("STRING", {"multiline": True, "default": ""}),
+                "negative_prompt": ("STRING", {"multiline": True, "default": ""}),
+                "shot_plan": ("STRING", {"multiline": True, "default": ""}),
+                "motion_notes": ("STRING", {"multiline": True, "default": ""}),
+                "model_settings": ("STRING", {"multiline": True, "default": ""}),
+                "bible_json": ("STRING", {"multiline": True, "default": ""}),
+                "storyboard_json": ("STRING", {"multiline": True, "default": ""}),
+                "character_reference": ("STRING", {"multiline": True, "default": ""}),
+                "continuity_checklist": ("STRING", {"multiline": True, "default": ""}),
+                "h3_json": ("STRING", {"multiline": True, "default": ""}),
+                "preset_json": ("STRING", {"multiline": True, "default": ""}),
+                "enhanced_prompt": ("STRING", {"multiline": True, "default": ""}),
+                "world_bible": ("OMG_WORLD_BIBLE",),
+                "character_bible": ("OMG_CHARACTER_BIBLE",),
+                "shot_list": ("OMG_SHOT_LIST",),
+                "image_ref_1": ("IMAGE",),
+                "image_ref_2": ("IMAGE",),
+                "image_ref_3": ("IMAGE",),
+                "clip": ("CLIP",),
+                "ollama_model": ("OLLAMA_MODEL",),
+                "fal_preset_id": ("STRING", {"default": "auto-infer"}),
+                "small_model_mode": ("BOOLEAN", {"default": False}),
+                "use_clip_fallback": ("BOOLEAN", {"default": False}),
+                "duration": ("INT", {"default": 8, "min": 4, "max": 15}),
+                "aspect_ratio": (["16:9", "9:16", "1:1", "4:3", "3:4", "21:9", "auto"], {"default": "16:9"}),
+            }
+        }
+
+class OMGFlowContextUpdate:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "update_context"
+    RETURN_TYPES = ("OMG_FLOW_CONTEXT", "STRING")
+    RETURN_NAMES = ("flow_context", "context_json")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"flow_context": ("OMG_FLOW_CONTEXT",)},
+            "optional": {
+                "concept": ("STRING", {"multiline": True, "default": ""}),
+                "positive_prompt": ("STRING", {"multiline": True, "default": ""}),
+                "negative_prompt": ("STRING", {"multiline": True, "default": ""}),
+                "shot_plan": ("STRING", {"multiline": True, "default": ""}),
+                "bible_json": ("STRING", {"multiline": True, "default": ""}),
+                "storyboard_json": ("STRING", {"multiline": True, "default": ""}),
+                "image_ref_1": ("IMAGE",),
+                "clip": ("CLIP",),
+                "ollama_model": ("OLLAMA_MODEL",),
+            }
+        }
+    def update_context(self, flow_context: Dict, **kwargs):
+        new_context = dict(flow_context) if isinstance(flow_context, dict) else {}
+        for k,v in kwargs.items():
+            if v not in (None, "", []):
+                new_context[k]=v
+        return (new_context, json.dumps({k: str(type(v).__name__) if k in ["image_ref_1","clip","ollama_model"] else str(v)[:500] for k,v in new_context.items()}, indent=2))
+
+class OMGFlowContextGet:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "get_from_context"
+    RETURN_TYPES = ("STRING", "STRING", "OMG_FLOW_CONTEXT")
+    RETURN_NAMES = ("value", "value_as_string", "flow_context_passthrough")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"flow_context": ("OMG_FLOW_CONTEXT",), "key": ("STRING", {"default": "positive_prompt"})}, "optional": {"default_value": ("STRING", {"default": ""})}}
+    def get_from_context(self, flow_context: Dict, key: str, default_value: str=""):
+        val = flow_context.get(key, default_value) if isinstance(flow_context, dict) else default_value
+        return (str(val)[:2000], str(val)[:2000], flow_context)
+
+class OMGFlowContextToPrompt:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "context_to_prompt"
+    RETURN_TYPES = ("STRING", "STRING", "STRING")
+    RETURN_NAMES = ("positive_prompt", "negative_prompt", "full_context_json")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"flow_context": ("OMG_FLOW_CONTEXT",)}, "optional": {"use_enhanced": ("BOOLEAN", {"default": True}), "include_bible": ("BOOLEAN", {"default": True}), "include_storyboard": ("BOOLEAN", {"default": False}), "small_model_mode": ("BOOLEAN", {"default": False})}}
+    def context_to_prompt(self, flow_context: Dict, use_enhanced=True, include_bible=True, include_storyboard=False, small_model_mode=False):
+        if not isinstance(flow_context, dict): return (str(flow_context),"", "{}")
+        pos = flow_context.get("enhanced_prompt") if use_enhanced and flow_context.get("enhanced_prompt") else flow_context.get("positive_prompt","") or flow_context.get("concept","")
+        if include_bible:
+            bible = flow_context.get("bible_json","") or flow_context.get("character_reference","")
+            if bible: pos += f"\n\n[CHARACTER BIBLE]\n{bible[:1000 if small_model_mode else 3000]}"
+        if include_storyboard:
+            sb = flow_context.get("storyboard_json","") or flow_context.get("shot_plan","")
+            if sb: pos += f"\n\n[STORYBOARD]\n{sb[:1000 if small_model_mode else 3000]}"
+        if small_model_mode and len(pos)>1500: pos = pos[:1500]+"\n\n[Truncated for 9B]"
+        neg = flow_context.get("negative_prompt","No extra people, No face drift")
+        return (pos, neg, json.dumps({k: str(type(v).__name__) if k in ["image_ref_1","clip","ollama_model"] else str(v)[:1000] for k,v in flow_context.items()}, indent=2))
+
+class OMGGroupBundle:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "bundle"
+    RETURN_TYPES = ("OMG_GROUP_CONTEXT", "STRING")
+    RETURN_NAMES = ("group_context", "group_json")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"group_name": ("STRING", {"default": "my_group"})},
+            "optional": {
+                "input_1": ("*",), "input_2": ("*",), "input_3": ("*",), "input_4": ("*",),
+                "input_5": ("*",), "input_6": ("*",), "input_7": ("*",), "input_8": ("*",),
+                "key_1": ("STRING", {"default": "concept"}), "key_2": ("STRING", {"default": ""}),
+                "key_3": ("STRING", {"default": ""}), "key_4": ("STRING", {"default": ""}),
+                "key_5": ("STRING", {"default": ""}), "key_6": ("STRING", {"default": ""}),
+                "key_7": ("STRING", {"default": ""}), "key_8": ("STRING", {"default": ""}),
+            }
+        }
+    def bundle(self, group_name: str, **kwargs):
+        group_dict = {"group_name": group_name, "type": "OMG_GROUP_CONTEXT", "keys": []}
+        for i in range(1,9):
+            val = kwargs.get(f"input_{i}")
+            key_name = kwargs.get(f"key_{i}","")
+            if val is None: continue
+            if isinstance(val,str) and val=="" and not key_name: continue
+            if not key_name: key_name = f"input_{i}"
+            group_dict[key_name]=val
+            group_dict["keys"].append(key_name)
+        json_safe = {"group_name": group_name, "keys": group_dict["keys"]}
+        return (group_dict, json.dumps(json_safe, indent=2))
+
+class OMGGroupUnbundle:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "unbundle"
+    RETURN_TYPES = ("*", "*", "*", "*", "*", "*", "*", "*")
+    RETURN_NAMES = ("output_1","output_2","output_3","output_4","output_5","output_6","output_7","output_8")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"group_context": ("OMG_GROUP_CONTEXT",)}, "optional": {f"key_{i}": ("STRING", {"default": ""}) for i in range(1,9)}}
+    def unbundle(self, group_context: dict, **kwargs):
+        if not isinstance(group_context, dict): return tuple([None]*8)
+        keys = group_context.get("keys", []) or [k for k in group_context.keys() if k not in ["group_name","type","keys"]]
+        outs=[]
+        for i in range(1,9):
+            k = kwargs.get(f"key_{i}","") or (keys[i-1] if i-1 < len(keys) else "")
+            outs.append(group_context.get(k) if k in group_context else None)
+        return tuple(outs)
+
+class OMGGroupMerge:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "merge"
+    RETURN_TYPES = ("OMG_GROUP_CONTEXT","OMG_FLOW_CONTEXT","STRING")
+    RETURN_NAMES = ("merged_group","merged_flow","merge_json")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"group_a": ("OMG_GROUP_CONTEXT",), "group_b": ("OMG_GROUP_CONTEXT",)}, "optional": {"merge_strategy": (["b_overwrites_a","a_overwrites_b","keep_both_with_prefix"],{"default":"b_overwrites_a"}), "prefix_a": ("STRING", {"default":"a_"}), "prefix_b": ("STRING", {"default":"b_"})}}
+    def merge(self, group_a: dict, group_b: dict, merge_strategy="b_overwrites_a", prefix_a="a_", prefix_b="b_"):
+        if not isinstance(group_a, dict): group_a={}
+        if not isinstance(group_b, dict): group_b={}
+        if merge_strategy=="b_overwrites_a":
+            merged={**group_a, **group_b}
+            merged["keys"]=list(dict.fromkeys((group_a.get("keys",[])+group_b.get("keys",[]))))
+        elif merge_strategy=="a_overwrites_b":
+            merged={**group_b, **group_a}
+            merged["keys"]=list(dict.fromkeys((group_b.get("keys",[])+group_a.get("keys",[]))))
+        else:
+            merged={"type":"OMG_GROUP_CONTEXT","keys":[]}
+            for k in group_a.get("keys",[]):
+                merged[f"{prefix_a}{k}"]=group_a.get(k)
+                merged["keys"].append(f"{prefix_a}{k}")
+            for k in group_b.get("keys",[]):
+                merged[f"{prefix_b}{k}"]=group_b.get(k)
+                merged["keys"].append(f"{prefix_b}{k}")
+        merged["group_name"]=f"{group_a.get('group_name','a')}+{group_b.get('group_name','b')}"
+        merged["type"]="OMG_GROUP_CONTEXT"
+        return (merged, merged, json.dumps({"group_name":merged.get("group_name"),"keys":merged.get("keys",[])[:20]}, indent=2))
+
+class OMGGroupSwitch:
+    CATEGORY = "ComfyUI-OMG2/Utility/Grouping"
+    FUNCTION = "switch"
+    RETURN_TYPES = ("OMG_GROUP_CONTEXT","OMG_FLOW_CONTEXT","STRING")
+    RETURN_NAMES = ("selected_group","selected_flow","selection_info")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"group_a": ("OMG_GROUP_CONTEXT",), "group_b": ("OMG_GROUP_CONTEXT",), "select_b": ("BOOLEAN", {"default": False})}, "optional": {"select_index": ("INT", {"default":0,"min":0,"max":1})}}
+    def switch(self, group_a: dict, group_b: dict, select_b=False, select_index=0):
+        use_b = select_b or (select_index==1)
+        selected = group_b if use_b else group_a
+        return (selected, selected, f"Selected {'B' if use_b else 'A'}: {selected.get('group_name','unnamed')}")
+
+class OMGGroupGate:
+    CATEGORY = "ComfyUI-OMG2/Utility/Flow"
+    FUNCTION = "gate"
+    RETURN_TYPES = ("OMG_GROUP_CONTEXT","BOOLEAN","STRING")
+    RETURN_NAMES = ("group_context","was_enabled","status")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"group_context": ("OMG_GROUP_CONTEXT",), "enabled": ("BOOLEAN", {"default": True})}, "optional": {"group_name": ("STRING", {"default": ""}), "bypass_on_disabled": ("BOOLEAN", {"default": False})}}
+    def gate(self, group_context: dict, enabled=True, group_name="", bypass_on_disabled=False):
+        if not isinstance(group_context, dict): group_context={"type":"OMG_GROUP_CONTEXT","group_name":group_name or "unnamed","keys":[]}
+        if enabled:
+            if group_name: group_context=dict(group_context); group_context["group_name"]=group_name
+            return (group_context, True, f"Enabled: {group_context.get('group_name','group')} passed through")
+        else:
+            if bypass_on_disabled:
+                gc=dict(group_context); gc["_disabled"]=True; return (gc, False, f"Disabled but bypass_on: {gc.get('group_name')} passed disabled")
+            empty={"type":"OMG_GROUP_CONTEXT","group_name":(group_name or group_context.get('group_name','group'))+" [DISABLED]","keys":[],"_disabled":True}
+            return (empty, False, f"Disabled: {empty['group_name']} blocked")
+
+class OMGFlowTrigger:
+    CATEGORY = "ComfyUI-OMG2/Utility/Flow"
+    FUNCTION = "trigger"
+    RETURN_TYPES = ("BOOLEAN","STRING","*")
+    RETURN_NAMES = ("is_ready","status","passthrough")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"trigger_mode": (["any_input_exists","image_valid","string_not_empty","always_true","always_false"],{"default":"any_input_exists"})}, "optional": {"image": ("IMAGE",), "video_path": ("STRING", {"default":""}), "string_signal": ("STRING", {"multiline":True,"default":""}), "any_value": ("*",), "invert": ("BOOLEAN", {"default": False})}}
+    def trigger(self, trigger_mode="any_input_exists", **kwargs):
+        image=kwargs.get("image"); video_path=kwargs.get("video_path",""); string_signal=kwargs.get("string_signal",""); any_value=kwargs.get("any_value"); invert=kwargs.get("invert",False)
+        is_ready=False; reason=""
+        if trigger_mode=="always_true": is_ready=True; reason="always_true"
+        elif trigger_mode=="always_false": is_ready=False; reason="always_false"
+        elif trigger_mode=="image_valid":
+            if image is not None:
+                try:
+                    import torch; is_ready = isinstance(image, torch.Tensor) and image.numel()>0
+                    reason=f"IMAGE valid shape {list(image.shape) if isinstance(image, torch.Tensor) else type(image)}"
+                except: is_ready=image is not None; reason="IMAGE exists"
+            else: is_ready=False; reason="No IMAGE"
+        elif trigger_mode=="string_not_empty":
+            if video_path and str(video_path).strip(): is_ready=True; reason=f"video_path not empty"
+            elif string_signal and str(string_signal).strip(): is_ready=True; reason=f"string_signal not empty"
+            else: is_ready=False; reason="Both empty"
+        else:
+            if image is not None: is_ready=True; reason="image exists"
+            elif video_path and str(video_path).strip(): is_ready=True; reason="video_path exists"
+            elif string_signal and str(string_signal).strip(): is_ready=True; reason="string_signal exists"
+            elif any_value is not None: 
+                if isinstance(any_value,str): is_ready=len(any_value.strip())>0
+                elif isinstance(any_value,(list,dict)): is_ready=len(any_value)>0
+                else: is_ready=True
+                reason=f"any_value exists type {type(any_value).__name__}"
+            else: is_ready=False; reason="no inputs"
+        if invert: is_ready=not is_ready; reason+=" [inverted]"
+        passthrough = image if image is not None else (video_path or string_signal or any_value)
+        return (is_ready, f"Trigger {trigger_mode}: is_ready={is_ready} - {reason}", passthrough)
+
+class OMGGroupSequencer:
+    CATEGORY = "ComfyUI-OMG2/Utility/Flow"
+    FUNCTION = "sequence_groups"
+    RETURN_TYPES = ("OMG_GROUP_CONTEXT","OMG_GROUP_CONTEXT","BOOLEAN","STRING")
+    RETURN_NAMES = ("image_group_out","video_group_out","video_should_run","status")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"image_group": ("OMG_GROUP_CONTEXT",), "video_group": ("OMG_GROUP_CONTEXT",), "image_generated": ("BOOLEAN", {"default": False})}, "optional": {"auto_enable_video": ("BOOLEAN", {"default": True}), "disable_image_after_video": ("BOOLEAN", {"default": False})}}
+    def sequence_groups(self, image_group: dict, video_group: dict, image_generated=False, auto_enable_video=True, disable_image_after_video=False):
+        if not isinstance(image_group, dict): image_group={"type":"OMG_GROUP_CONTEXT","group_name":"image_group","keys":[]}
+        if not isinstance(video_group, dict): video_group={"type":"OMG_GROUP_CONTEXT","group_name":"video_group","keys":[]}
+        image_out=dict(image_group)
+        if disable_image_after_video and image_generated and auto_enable_video:
+            image_out["_disabled"]=True
+            image_out["group_name"]=image_out.get("group_name","image_group")+" [DISABLED after video trigger]"
+        if auto_enable_video and image_generated:
+            video_out=dict(video_group); video_out["_enabled_by"]="image_generated trigger"
+            status=f"Image generated=True -> Video ENABLED: {video_out.get('group_name','video_group')} should run now."
+            video_should_run=True
+        elif not auto_enable_video:
+            video_out={"type":"OMG_GROUP_CONTEXT","group_name":video_group.get("group_name","video_group")+" [WAITING manual]","keys":[],"_disabled":True}
+            status=f"Auto_enable_video=False -> Video DISABLED waiting manual. Image_generated={image_generated}"
+            video_should_run=False
+        else:
+            video_out={"type":"OMG_GROUP_CONTEXT","group_name":video_group.get("group_name","video_group")+" [DISABLED waiting image]","keys":[],"_disabled":True}
+            status=f"Image_generated=False -> Video DISABLED waiting image."
+            video_should_run=False
+        return (image_out, video_out, video_should_run, status)
+
+class OMGFlowBarrier:
+    CATEGORY = "ComfyUI-OMG2/Utility/Flow"
+    FUNCTION = "barrier"
+    RETURN_TYPES = ("BOOLEAN","STRING")
+    RETURN_NAMES = ("all_ready","status")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"condition_1": ("BOOLEAN", {"default": False})}, "optional": {"condition_2": ("BOOLEAN", {"default": True}), "condition_3": ("BOOLEAN", {"default": True}), "condition_4": ("BOOLEAN", {"default": True}), "mode": (["all_true","any_true","all_false","count_true"],{"default":"all_true"}), "required_count": ("INT", {"default":2,"min":1,"max":4})}}
+    def barrier(self, condition_1=False, condition_2=True, condition_3=True, condition_4=True, mode="all_true", required_count=2):
+        conditions=[condition_1, condition_2, condition_3, condition_4]
+        if mode=="all_true": all_ready=all(conditions); status=f"Barrier all_true: {conditions} -> {all_ready}"
+        elif mode=="any_true": all_ready=any(conditions); status=f"Barrier any_true: {conditions} -> {all_ready}"
+        elif mode=="all_false": all_ready=not any(conditions); status=f"Barrier all_false: {conditions} -> {all_ready}"
+        else: true_count=sum(1 for c in conditions if c); all_ready=true_count>=required_count; status=f"Barrier count_true: {true_count}/{len(conditions)} true, required {required_count} -> {all_ready}"
+        return (all_ready, status)
+
+NODE_CLASS_MAPPINGS = {
+    "OMGFlowContextCreate": OMGFlowContextCreate,
+    "OMGFlowContextUpdate": OMGFlowContextUpdate,
+    "OMGFlowContextGet": OMGFlowContextGet,
+    "OMGFlowContextToPrompt": OMGFlowContextToPrompt,
+    "OMGGroupBundle": OMGGroupBundle,
+    "OMGGroupUnbundle": OMGGroupUnbundle,
+    "OMGGroupMerge": OMGGroupMerge,
+    "OMGGroupSwitch": OMGGroupSwitch,
+    "OMGGroupGate": OMGGroupGate,
+    "OMGFlowTrigger": OMGFlowTrigger,
+    "OMGGroupSequencer": OMGGroupSequencer,
+    "OMGFlowBarrier": OMGFlowBarrier,
+}
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "OMGFlowContextCreate": "OMG Flow Context Create (Bundle MiniMax Flow - Advanced Grouping)",
+    "OMGFlowContextUpdate": "OMG Flow Context Update",
+    "OMGFlowContextGet": "OMG Flow Context Get Field",
+    "OMGFlowContextToPrompt": "OMG Flow Context To Prompt (Final H3 Prompt)",
+    "OMGGroupBundle": "OMG Group Bundle (Any Type - Advanced Reroute)",
+    "OMGGroupUnbundle": "OMG Group Unbundle (Any Type)",
+    "OMGGroupMerge": "OMG Group Merge (2 Groups -> 1)",
+    "OMGGroupSwitch": "OMG Group Switch (A/B Select)",
+    "OMGGroupGate": "OMG Group Gate (Enable/Disable Group in Flow)",
+    "OMGFlowTrigger": "OMG Flow Trigger (Image/Video/String -> Boolean for Next Group)",
+    "OMGGroupSequencer": "OMG Group Sequencer (Image Group -> Video Group Manager)",
+    "OMGFlowBarrier": "OMG Flow Barrier (Wait for Multiple Groups)",
+}
