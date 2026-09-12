@@ -1,0 +1,617 @@
+{
+  "info": "Fal.ai MiniMax H3 Prompting Guide - 44 Video Examples as Comfy-OMG Presets, built from https://fal.ai/learn/devs/minimax-h3-prompting-guide + https://www.promptsama.ai/models/minimax-h3.html - Each preset includes reference authority, timed shot list, audio direction, negatives, identity locks",
+  "specs": "4-15s, 24 FPS, native stereo audio, 2K 1440px short edge 16:9-9:16 ~3.7MP wider, ratios 21:9/16:9/4:3/1:1/3:4/9:16, Omni 9 images + 3 videos + 3 audios max 12, 15s pools, prompt up to 7000 chars, labels Image1/Video1/Audio1 no @",
+  "key_techniques": [
+    "1. Assign a job to every reference - e.g. Use Image1 for mood/location/film texture; Image2 for talent; Image3 for bag; Image4 for closing brand mark",
+    "2. Write a timed shot list for anything longer than one beat - [0 to 2 seconds] ... [2 to 4 seconds] ... [10 to 15 seconds]",
+    "3. Direct the audio, not just picture - deep sub-bass pulse, metallic resonance, ice tapping crystal",
+    "4. State what you do not want - No soft dissolves, No Chinese text, No tearing, black frames, hard cuts",
+    "5. Lock identity explicitly - Preserve half-up long black hair, openwork silver crown, indigo ribbon...",
+    "6. For edits, name change and constraint together - Replace newspaper with green hardcover book; preserve identity timing",
+    "7. Use camera and film language - subtle handheld shake, rack focus, fine grain, soft highlight halation",
+    "8. Describe transitions as events - fast binocular-scan transitions with whip movement, motion blur, optical smearing"
+  ],
+  "presets": [
+    {
+      "id": "vintage_binocular_brand_film",
+      "name": "Vintage Binocular Brand Film",
+      "category": "Brand Films & Cinematic Content",
+      "endpoint": "reference-to-video",
+      "reference_count": "4 images",
+      "reference_use": [
+        "Use Images 1-4 as sequential keyframes, seen through a vintage binocular viewfinder searching for the MINIMAX installation",
+        "Image1: first keyframe, Image2: fabric wind motion, Image3: passerby, Image4: glasses adjustment"
+      ],
+      "prompt_template": "Use Images 1-4 as sequential keyframes, seen through a vintage binocular viewfinder searching for the MINIMAX installation. Open out of focus with subtle handheld shake, then push in quickly and rack focus onto Image 1. Between keyframes, use fast binocular-scan transitions with whip movement, motion blur, optical smearing, and brief exposure flicker. Cut at peak blur, then settle and snap back into focus. Keep the twin circular lens mask absolutely fixed throughout: identical position, scale, feathered black vignette, and edge softness, with no warping or drift. Only the image inside the mask may move.\n\nIn Image 2, let the fabric move gently in the wind while the MINIMAX lettering follows the folds and remains legible. In Image 3, the subject should feel like a stylish passerby caught by chance, walking, turning, and swinging their arms naturally. In Image 4, the subject adjusts their glasses or lifts their chin slightly with a cool, effortless fashion-campaign attitude.\n\nRed typography should resolve with the focus: begin slightly blurred and at low opacity, then fade into clarity over 0.3-0.5 seconds. A subtle vertical slide or slight tracking expansion is allowed. Fade it out before the next transition or let motion blur carry it away. No spins, bounces, or large fly-ins/outs.\n\nVisual language: a voyeuristic, Wes Anderson-inspired 35 mm film look with fine grain, soft highlight halation, restrained color, and red typographic accents. Minimal, premium, lightly playful. Do not add people, vehicles, buildings, or logos. Preserve the core composition and the MINIMAX installation exactly.",
+      "negatives": "No warping or drift of lens mask, No spins bounces large fly-ins/outs, Do not add people vehicles buildings logos",
+      "shot_plan": "0-4s Open out of focus with handheld shake, push in quickly rack focus onto Image1, red typo fades in; 4-8s Binocular-scan whip transition with motion blur smearing to Image2 fabric wind; 8-12s Cut at peak blur settle snap into focus Image3 passerby; 12-15s Image4 glasses adjust, typo fade out with blur, stable tableau",
+      "ideal_for": "Brand film, trailer with scope/binocular motif, premium typography legibility"
+    },
+    {
+      "id": "epic_space_opera_teaser",
+      "name": "Epic Space Opera Teaser",
+      "category": "Brand Films & Cinematic Content",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "1 image",
+      "reference_use": ["Image1 defines overall cinematic space opera mood and visual language"],
+      "prompt_template": "Epic theatrical space-opera teaser\n\nKeep the pace fast and the scale enormous without letting the edit drag. Use sharp hard cuts, a shaking command deck, white-hot flashes, split-second black frames, and a violent jump-to-warp impact. Title cards should use wide-tracked cinematic typography—not pure white—with restrained material texture, subtle illumination, and a faint edge glow. Animate the titles by emerging from deep-space shadow, catching a sweep of starlight, opening their letter spacing, leaving a slight afterimage, and flashing briefly against black.",
+      "negatives": "No slow drag, No pure white cheap titles, No soft dissolves",
+      "shot_plan": "0-3s Establishing colossal fleet, shaking deck; 3-7s White-hot flashes, hard cuts, black frames; 7-12s Jump-to-warp violent impact, titles emerge from shadow with starlight sweep; 12-15s Afterimage flash against black, stable",
+      "ideal_for": "Space opera trailer, large scale teaser"
+    },
+    {
+      "id": "sci_fi_mystery_teaser",
+      "name": "Sci-Fi Mystery Teaser",
+      "category": "Brand Films & Cinematic Content",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": [
+        "Use Image 1 for the overall mood and visual language",
+        "Use Image 2 as the protagonist reference"
+      ],
+      "prompt_template": "Sci-fi mystery teaser\n\nPhotoreal cinematic treatment, high-contrast lighting, and tight pacing. Use Image 1 for the overall mood and visual language; use Image 2 as the protagonist reference.\n\nShot 1 — Ultra-wide establishing shot. A colossal circular cosmic gateway nearly fills the frame. The protagonist appears only as a tiny figure from behind, positioned low and slightly right of center. Wet ground reflects the light; the center of the gateway is pitch black. Slowly push the camera forward. A large title emerges from the edge of the darkness, resolving from soft blur into sharp focus: 'THE STARS WERE LISTENING.' Set it in an extremely condensed, heavy, all-caps face, colored dark crimson and rust red, with light grain and mist-softened edges.\n\nAudio: a deep sub-bass pulse, distant metallic resonance, and one restrained hit as the title locks into focus. → Hard cut.",
+      "negatives": "No small gateway, No bright daylight, No protagonist large",
+      "shot_plan": "0-5s Ultra-wide gateway nearly fills frame, tiny protagonist low right, wet reflection, slow push forward; 5-10s Title emerges from darkness edge soft blur to sharp focus dark crimson rust red; 10-15s Audio sub-bass pulse metallic resonance restrained hit, hard cut",
+      "ideal_for": "Mystery teaser, title reveal from darkness"
+    },
+    {
+      "id": "desert_fashion_campaign",
+      "name": "Desert Fashion Campaign",
+      "category": "Brand Films & Cinematic Content",
+      "endpoint": "reference-to-video",
+      "reference_count": "4 images",
+      "reference_use": [
+        "Image 1 for overall mood, location, film texture",
+        "Image 2 for talent",
+        "Image 3 for bag",
+        "Image 4 for closing brand mark"
+      ],
+      "prompt_template": "Create a premium 16:9 landscape fashion film. Use Image 1 for the overall mood, location, and film texture; Image 2 for the talent; Image 3 for the bag; and Image 4 for the closing brand mark. This is a fashion campaign for the clothing and bag. The tone is elevated, cool, and restrained, but the edit should still feel lively and fashion-forward—not like a conventional narrative film or an e-commerce ad.\n\nKeep the story simple: beside a vintage car on a desert highway, a woman walks to the rear of the car, opens the trunk, takes out a black bag, shares a quiet beat with the man standing nearby, then leaves carrying the bag. Integrate the clothing and bag naturally into the performance so they feel like part of the characters' identity.",
+      "negatives": "No conventional narrative film feel, No e-commerce ad feel, No identity drift",
+      "shot_plan": "0-4s Wide beside vintage car desert highway establishing; 4-8s Woman walks to rear opens trunk takes black bag; 8-12s Quiet beat with man nearby; 12-15s Leaves carrying bag, brand mark Image4 closing",
+      "ideal_for": "Fashion campaign, elevated cool restrained but lively, bag/clothing as identity"
+    },
+    {
+      "id": "cyber_grunge_fashion_film",
+      "name": "Cyber-Grunge Fashion Film",
+      "category": "Brand Films & Cinematic Content",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": [
+        "Image 1 as reference for texture and mood",
+        "Image 2 for subject's appearance"
+      ],
+      "prompt_template": "Use Image 1 as the reference for texture and mood, and Image 2 for the subject's appearance. Generate a 15-second, 16:9 fashion short. Preserve the subject's identity: long platinum-blonde hair, narrow black vintage sunglasses, a glossy black patent-leather trench coat, a cool, self-assured expression, and orange firelight reflected across the coat.\n\nStyle: fast-cut fashion film on analog stock, set against a nighttime blaze with black smoke and orange-red flames. Layer in VHS glitches, CCTV signal interruptions, 1990s film grain, scanlines, chromatic aberration, light leaks, flash-to-white transitions, and subtle frame jitter.",
+      "negatives": "No identity drift, No calm slow edit",
+      "shot_plan": "0-4s Establishing nighttime blaze black smoke, subject identity lock; 4-8s Fast cuts analog stock VHS glitches; 8-12s CCTV interruptions scanlines light leaks flash-to-white; 12-15s Subtle frame jitter, firelight reflection on coat",
+      "ideal_for": "Fast-cut analog fashion, fire backdrop, VHS texture"
+    },
+    {
+      "id": "retro_anime_crime_title_sequence",
+      "name": "Retro Anime Crime Title Sequence",
+      "category": "Visual Concepts & Motion Design",
+      "endpoint": "reference-to-video",
+      "reference_count": "5 images",
+      "reference_use": [
+        "Images 1-5 define retro Japanese animation title style, hard-edged silhouettes, comic-book collage, split screens, color fields"
+      ],
+      "prompt_template": "Create a 15-second, 16:9 opening-title sequence for a stylish crime mystery. Draw from retro Japanese animation titles, hard-edged silhouettes, comic-book collage, asymmetric split screens, bold geometric color fields, English credit typography, sparse katakana accents, and a noir-jazz sensibility. Aim for 60% suspense and 40% jazz: mysterious, cool, agile, and urban—never horror, heavy drama, or a cheerful jazz music video.\n\nBuild the sequence as motion-graphics collage: linework appears over black, split-screen boundaries snap into place, then color blocks and frames assemble piece by piece. Character silhouettes, prop close-ups, and English credits slide, pop, and reveal through masks on the beat. Keep it designed and graphic, not like conventional narrative animation.\n\nCredits must be clean and legible. Animate thin frames drawing on, names sliding in, letters appearing one at a time, or color blocks revealing type, then hold briefly. Do not introduce Chinese text, garbled characters, or misspellings. Each role and each name appears once only; do not assign multiple roles to the same name.\n\nVary the transitions: circular vinyl-record wipes, vertical car-door cuts, long character shadows wiping frame, red-line slices, oversized letter masks, split-screen reconfigurations, hard color-block cuts, and tiled frames snapping into place. Keep every transition crisp, rhythmic, suspenseful, and collage-driven. No soft dissolves or fluid morphs.\n\nBGM: an original 15-second title cue, 60% suspense and 40% jazz. Use a low drone, tense string pizzicato, cool synth pulses, low kick, sparse brushwork, fragments of walking bass, short baritone-sax phrases, and clipped brass accents. Build suspense with low frequencies and hi-hat in first 2 seconds; bring in low beat at 3 seconds, jazz-bass movement at 6 seconds, short sax/brass riff at 10 seconds. Freeze final 2 seconds on tense chord and drum hit. Keep it mysterious and criminally cool, never upbeat, and do not imitate existing melody.",
+      "negatives": "No horror heavy drama cheerful jazz music video, No soft dissolves fluid morphs, No Chinese text garbled characters misspellings, No upbeat",
+      "shot_plan": "0-2s Linework over black, split-screen boundaries snap; 2-6s Color blocks frames assemble, silhouettes prop close-ups, credits slide pop reveal; 6-10s Vinyl-record wipes, car-door cuts, shadow wipes, red-line slices; 10-15s Tiled frames snap, freeze final 2s tense chord drum hit",
+      "ideal_for": "Anime crime title sequence, motion-graphics collage"
+    },
+    {
+      "id": "hand_drawn_kitchen_creature",
+      "name": "Hand-Drawn Kitchen Creature",
+      "category": "Visual Concepts & Motion Design",
+      "endpoint": "text-to-video",
+      "reference_count": "0",
+      "reference_use": [],
+      "prompt_template": "15 seconds, 16:9 landscape. Blend live-action footage of a small kitchen at dusk with hand-drawn luminous animation. The last sunset light lingers at the window. The lived-in kitchen contains an old wooden table, a half-washed mug, a lightly fogged glass bottle, and a hanging dish towel.\n\nShoot as if someone is filming one-handed on a phone: subtle hand tremor, hesitant close-focus pulls, backlit exposure breathing, and slightly coarse noise in the shadows. It should feel like an astonishing event captured in a rush at home, not a carefully dressed commercial.\n\nDo not show giant eyes, split mouths, fangs, threatening behavior, lunges, sudden black frames, or jump scares. Use only room tone, cloth friction, a soft mug clink, faucet drips, the camera operator's footsteps and quiet breathing, plus gentle electronic tones and tiny vocalizations from the drawn creatures.",
+      "negatives": "No giant eyes split mouths fangs threatening behavior lunges black frames jump scares, No carefully dressed commercial",
+      "shot_plan": "0-4s Small kitchen dusk last sunset light window establishing one-handed phone tremor; 4-8s Half-washed mug fogged bottle dish towel close focus pulls; 8-15s Luminous hand-drawn creature appears tiny vocalizations gentle electronic tones room tone",
+      "ideal_for": "Hand-drawn creature living with live-action, phone-shot authentic"
+    },
+    {
+      "id": "neon_laundromat_encounter",
+      "name": "Neon Laundromat Encounter",
+      "category": "Visual Concepts & Motion Design",
+      "endpoint": "text-to-video",
+      "reference_count": "0",
+      "reference_use": [],
+      "prompt_template": "15 seconds, 16:9 landscape. Combine a live-action late-night laundromat with hand-drawn luminous animation. The small self-service laundromat has gently flickering fluorescent lights, running washers, plastic baskets, a worn bench, and one sock on the floor. Keep the space quiet and faintly nostalgic.\n\nUse a one-handed phone-camera feel with visible shake, exposure fluctuation under white fluorescent light, environmental reflections in glass, and delayed autofocus at close range. Avoid polished commercial composition; it should feel like an authentic late-night encounter, filmed while following a strange apparition.",
+      "negatives": "No polished commercial composition",
+      "shot_plan": "0-5s Late-night laundromat fluorescent flicker washers baskets bench sock establishing phone shake; 5-10s Exposure fluctuation reflections delayed autofocus; 10-15s Luminous apparition encounter quiet nostalgic",
+      "ideal_for": "Late-night laundromat magic, hand-drawn luminous"
+    },
+    {
+      "id": "cyber_grunge_rap_music_video",
+      "name": "Cyber-Grunge Rap Music Video",
+      "category": "Visual Concepts & Motion Design",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": ["Image1 and Image2 define typographic treatment and surface texture"],
+      "prompt_template": "Style: dark-pop / cyber-grunge / rap music video with photoreal high-fashion polish and the texture of a scanned film magazine—high contrast without looking cheap. Reference late-1990s to early-2000s indie magazines, photocopies, film scans, underground-music posters, and zine collage. Add coarse grain, subtle gate weave, halftone dots, rough print edges, and slight scan misregistration. Keep the edit fast and use hard cuts only—no fades or soft transitions. Match the typographic treatment and surface texture of the reference images.",
+      "negatives": "No fades soft transitions, No cheap looking",
+      "shot_plan": "0-5s High contrast scanned magazine texture establishing; 5-10s Coarse grain gate weave halftone dots fast hard cuts; 10-15s Rough print edges scan misregistration typographic treatment",
+      "ideal_for": "Rap music video, zine collage texture"
+    },
+    {
+      "id": "green_screen_to_fairytale_composite",
+      "name": "Green-Screen to Fairytale Composite",
+      "category": "Visual Concepts & Motion Design",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 videos",
+      "reference_use": [
+        "Video1 is source with green screen background and characters",
+        "Video2 is target fairy tale background, atmosphere, lighting style"
+      ],
+      "prompt_template": "Remove the green screen background of Video 1 and turn it into a fairy tale-like background similar to Video 2. The background elements need to completely match the actions of the characters in Video 1. Modify the lighting of the characters in Video 1 so that it completely matches the background.\n\nPreserve foreground identity, hair and fabric edges, gesture timing, scale, camera, and duration unchanged. No green spill or altered performance.",
+      "negatives": "No green spill, No altered performance",
+      "shot_plan": "0-15s Single continuous composite: green removal + fairy tale environment + relighting to match + background parallax responding to subject",
+      "ideal_for": "Green-screen replacement with full relight and parallax"
+    },
+    {
+      "id": "animated_gallery_poster",
+      "name": "Animated Gallery Poster",
+      "category": "Visual Concepts & Motion Design",
+      "endpoint": "image-to-video",
+      "reference_count": "1 image open frame",
+      "reference_use": ["Image1 is source artwork with white gallery border, inner frame, red/white/black palette, 3D collectible-figure look"],
+      "prompt_template": "Animate the source artwork as a motion poster while preserving its white gallery border, inner frame, red/white/black palette, 3D collectible-figure look, and original layout. Add a light, playful type-on sound whenever text appears.",
+      "negatives": "No border removal, No palette change",
+      "shot_plan": "0-4s Static poster; 4-10s Subtle motion of collectible figure, type-on sound; 10-15s Layout preserved, playful",
+      "ideal_for": "Gallery poster animation"
+    },
+    {
+      "id": "snowy_bamboo_wuxia_mystery",
+      "name": "Snowy Bamboo Wuxia Mystery",
+      "category": "AI-Native Storytelling",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": ["Image1 bamboo forest mood, Image2 characters"],
+      "prompt_template": "A 16:9 cinematic wuxia mystery set in a bamboo forest at night. Use a low-saturation palette of cold blue, ink green, charcoal, and gray. Thin mist fills the forest and fine snow drifts through the air. The mood is austere, lethal, and controlled, with the tension of a martial-arts sect investigating a case and exchanging secret intelligence.\n\nDeep in the forest, dense vertical bamboo fills the background while cold white mist-light glows in the distance. Soft, out-of-focus leaves partially obscure the foreground, creating the sense of watching from within the grove. A cool, soft front-side key lights the actors' faces; backlight keeps the foreground dark and the distance luminous. Use shallow depth of field so leaves, snow, and bamboo dissolve into soft bokeh.\n\nPrioritize facial close-ups and measured shot/reverse-shot coverage. Keep the rhythm restrained but tense. Photoreal period-drama production value, cinematic lighting, and no modern elements. No subtitles, on-screen text, watermarks, modern clothing or architecture, animation styling, over-smoothed skin, bright daylight, or comic performance.",
+      "negatives": "No subtitles, No modern clothing architecture, No animation styling, No over-smoothed skin, No bright daylight",
+      "shot_plan": "0-4s Deep bamboo background cold mist-light distance, leaves foreground obscure watching from grove; 4-9s Facial close-ups soft front-side key shallow DOF bokeh snow drift; 9-15s Shot reverse-shot restrained tense",
+      "ideal_for": "Wuxia mystery, bamboo forest night, period drama"
+    },
+    {
+      "id": "vertical_family_confrontation",
+      "name": "Vertical Family Confrontation",
+      "category": "AI-Native Storytelling",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": ["Images define Chinese family home small restaurant lived-in realistic"],
+      "prompt_template": "A 9:16 vertical family-confrontation scene with grounded live-action performances, set in a Chinese family home or small restaurant. Use warm interior light, red decorations and calligraphy in the background, shallow depth of field, intense emotion, and tight pacing.\n\nPerformance: natural short-form drama, never theatrical. Qin Haoxuan argues back with anger, hurt, and urgency. The older woman questions him in a sharp, forceful, relentless tone. Build the confrontation steadily.\n\nShoot mainly in medium-close shots with frequent shot/reverse-shot cutting. Keep the setting lived-in and realistic. No sci-fi, period costume, or animation styling. Do not show subtitles, added text, platform watermarks, or stickers.",
+      "negatives": "No theatrical, No sci-fi period costume animation styling, No subtitles watermarks stickers",
+      "shot_plan": "0-4s Warm interior red decorations calligraphy background establishing; 4-8s Medium-close Qin Haoxuan argues anger hurt urgency; 8-15s Older woman sharp relentless tone shot reverse-shot tight pacing",
+      "ideal_for": "Vertical 9:16 family drama, short-form"
+    },
+    {
+      "id": "vampire_romance_short_drama",
+      "name": "Vampire Romance Short Drama",
+      "category": "AI-Native Storytelling",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": [
+        "Image 1 for leads' appearance",
+        "Image 2 for setting"
+      ],
+      "prompt_template": "Create a 15-second, 9:16 live-action vampire-romance teaser for an international short-drama audience. Use Image 1 for the leads' appearance and Image 2 for the setting. Preserve both identities throughout and maintain premium live-action production value.\n\nStory: an innocent human woman strays into a forbidden wing of an old castle and awakens a sleeping vampire noble. He senses that she carries a trace of an ancient war, which sparks dangerous fascination and a possessive need for control. She fears him but refuses to submit completely and pushes back against his dominance.\n\nStyle: ReelShort / DramaBox vampire romance—darkly romantic, fate-bound, oppressive, and charged with dangerous attraction, with a strong hook and a high-impact turn. Keep it polished, restrained, and tightly paced like the opening 15 seconds of a breakout series. No gore, cheap horror, Halloween styling, or modern street aesthetic.\n\nCompose for TikTok / ReelShort / DramaBox. Favor medium-close shots, close-ups, and extreme close-ups that emphasize faces, eye contact, pressure, and relationship tension.",
+      "negatives": "No gore cheap horror Halloween styling modern street aesthetic",
+      "shot_plan": "0-5s Woman strays forbidden wing old castle; 5-10s Awakens vampire noble senses ancient war dangerous fascination; 10-15s High-impact turn pushback, close-ups eye contact pressure",
+      "ideal_for": "Vertical vampire romance, ReelShort style"
+    },
+    {
+      "id": "futuristic_eyewear_campaign",
+      "name": "Futuristic Eyewear Campaign",
+      "category": "Product & E-Commerce Marketing",
+      "endpoint": "reference-to-video",
+      "reference_count": "3 images + 1 video reference",
+      "reference_use": [
+        "Image 1 for key visual: two full-body female models (one Black one white) elevated wardrobe body language runway presence",
+        "Image 2 for facial details",
+        "Image 3 for eyewear product: wraparound curved lenses cat-eye goggle hybrid mirrored reflections streamlined temples",
+        "Reference video for shot rhythm edit speed white-cyclorama look severe fashion attitude"
+      ],
+      "prompt_template": "Create a premium 9:16 fashion-eyewear commercial. Match the reference video's shot rhythm, edit speed, white-cyclorama look, and severe fashion attitude. Use a seamless minimal white studio with clean, bold, avant-garde art direction worthy of a global luxury campaign.\n\nUse Image 1 for the key visual: two full-body female models, one Black and one white, preserving their elevated wardrobe, body language, studio lighting, runway presence, and cool attitude. Use Image 2 for facial details. Both models wear futuristic luxury eyewear based on Image 3: wraparound curved lenses, a sharp cat-eye/goggle hybrid silhouette, mirrored reflections, streamlined temples, and the finish of a premium fashion accessory.",
+      "negatives": "No identity drift, No non-white cyclorama",
+      "shot_plan": "0-4s White cyclorama minimal studio two models full-body; 4-8s Close-up facial details runway presence; 8-15s Futuristic eyewear hero wraparound mirrored reflections cat-eye goggle hybrid",
+      "ideal_for": "Luxury eyewear commercial, white cyclorama, severe fashion attitude"
+    },
+    {
+      "id": "ergonomic_chair_product_film",
+      "name": "Ergonomic Chair Product Film",
+      "category": "Product & E-Commerce Marketing",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": ["Image1 feature details", "Image2 product"],
+      "prompt_template": "Product Feature Visualization\n\nPresent a black Herman Miller ergonomic chair in a premium office with a full 360-degree product reveal. Cut to macro views of the breathable mesh back with airflow visualization, an engineering animation of the lumbar support and ergonomic curve, and demonstrations of multidirectional armrest and seat-height adjustment. Show designers, developers, and creative professionals working comfortably over long sessions. Include a 3D skeletal-support visualization that communicates all-day comfort, plus refined interior styling. End with the line: 'WHERE INSPIRATION MEETS COMFORT.' Keep the direction minimal, cool-toned, professional, futuristic, and slow-paced. Use Image 1 for feature details and Image 2 for the product.",
+      "negatives": "No warm chaotic clutter",
+      "shot_plan": "0-4s 360-degree product reveal premium office; 4-8s Macro mesh back airflow visualization lumbar ergonomic curve engineering animation; 8-12s Armrest seat-height adjustment demos designers working long sessions skeletal support viz; 12-15s Line WHERE INSPIRATION MEETS COMFORT, minimal cool-toned professional",
+      "ideal_for": "Ergonomic chair feature viz, 360 reveal, engineering animation"
+    },
+    {
+      "id": "interactive_game_equipment_ui",
+      "name": "Interactive Game Equipment UI",
+      "category": "Digital Experiences & Game Concepts",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": ["Image1 for character", "Image2 for UI style"],
+      "prompt_template": "Use Image 1 for the character and Image 2 for the UI style.\n\n[0-2 seconds] High-angle overhead shot. The character sits on a vivid, highly saturated purple floor, looks up at camera, and matches Image 1. A game menu appears on the right: START NEW GAME, CONTINUE (highlighted), SETTINGS, EXIT GAME. Player profile MINIMAX appears top left. The cursor selects CONTINUE.\n\n[2-4 seconds] Smoothly push in to her right arm. A RIGHT ARM EQUIPMENT panel slides in from the right. PHANTOM GRIP is selected, then the selection moves to CHRONOS CLAW. Her mechanical hand reconfigures: fingers separate, new claw-like joints lock into place, and cyan LEDs flare brighter.\n\n[4-7 seconds] Arc smoothly to her left. An ARMAMENT CUSTOMIZATION grid slides in, showing hand, forearm, elbow, and upper-arm components. The selector cycles rapidly. Her left arm disassembles section by section: the forearm plate releases, new armor slides in, the elbow joint swaps, and the hand reconfigures, with exposed wiring and pistons visible during the change.\n\n[7-8.5 seconds] Pull back to a medium shot. CONFIRM CONFIG flashes; click it. All UI panels collapse inward and vanish. She uncrosses her legs and settles into a relaxed seated pose with one knee raised, lifting the prosthetic hand for a subtle post-configuration movement.\n\n[8.5-10 seconds] A LOADING bar appears along the bottom and races from 0% to 100%. The saturated purple environment darkens as shadows creep inward and warm golden light begins to bleed through.\n\n[10-15 seconds] As she stands, the full world loads around her: a dense cyberpunk slum with flickering neon, rain-wet streets, moving crowds, passing motorcycles, tangled overhead cables, and stacked buildings stretching toward futuristic towers. Settle into a third-person camera behind her. HUD elements fade in: minimap top right, health and ammo bottom left, then a mission marker. She steps into the street.",
+      "negatives": "No UI text garble, No identity drift",
+      "shot_plan": "0-2s overhead purple floor menu; 2-4s push in right arm equipment panel PHANTOM GRIP to CHRONOS CLAW cyan LEDs; 4-7s arc left armament grid disassembly wiring pistons; 7-8.5s pull back CONFIRM CONFIG collapse; 8.5-10s LOADING bar 0-100% purple to golden; 10-15s world loads cyberpunk slum third-person HUD minimap health ammo mission marker",
+      "ideal_for": "Game UI equipment customization, cyberpunk slum world loading"
+    },
+    {
+      "id": "nike_style_product_landing_page",
+      "name": "Nike-Style Product Landing Page",
+      "category": "Digital Experiences & Game Concepts",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 image",
+      "reference_use": ["Image1 for product"],
+      "prompt_template": "Create a dynamic product-landing-page UI/UX demo inspired by Nike's digital language, built around the product in Image 1. Use oversized, bold, italicized sans-serif typography and backgrounds that combine speed-driven light streaks with dark carbon fiber or breathable performance-mesh textures. Show a smooth, fast, powerful scroll through the page, plus high-impact hover interactions with scale-ups and color inversion.",
+      "negatives": "No slow scroll, No garbled text",
+      "shot_plan": "0-5s Oversized bold italic sans-serif typography light streaks carbon fiber background establishing; 5-10s Fast powerful scroll; 10-15s Hover interactions scale-ups color inversion",
+      "ideal_for": "Nike-style landing page UI demo"
+    },
+    {
+      "id": "automotive_website_ui_animation",
+      "name": "Automotive Website UI Animation",
+      "category": "Digital Experiences & Game Concepts",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "1 image",
+      "reference_use": ["Image1 is source website UI"],
+      "prompt_template": "Animate the website UI: the top headline slides down into place, the copy panel below slides up, and the car's lights shift from dark to red.",
+      "negatives": "No extra UI elements",
+      "shot_plan": "0-5s Headline slides down; 5-10s Copy slides up; 10-15s Car lights dark to red",
+      "ideal_for": "Automotive website UI micro-animation"
+    },
+    {
+      "id": "rotating_product_page_reveal",
+      "name": "Rotating Product Page Reveal",
+      "category": "Digital Experiences & Game Concepts",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "1 image",
+      "reference_use": ["Image1 product page"],
+      "prompt_template": "Reveal the layout from top to bottom. Upper and center typography slides down; lower typography slides up. Once the central product appears, let it rotate subtly.",
+      "negatives": "No hard cut",
+      "shot_plan": "0-4s Top to bottom reveal upper center typo slides down; 4-8s Lower typo slides up; 8-15s Central product subtle rotation",
+      "ideal_for": "Product page reveal with rotation"
+    },
+    {
+      "id": "claymation_lava_canyon_leap",
+      "name": "Claymation Lava Canyon Leap",
+      "category": "Animation & Stylized Visuals",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "1 image",
+      "reference_use": ["Image1 fox and canyon"],
+      "prompt_template": "Claymation. A fox sprints to the edge of a cliff and launches without hesitation, making a dramatic heroic leap in slow motion over an immense lava canyon. Midair, the camera races beneath the fox's belly in a bold dynamic move, revealing the terrifying depth of the chasm and the fully extended motion of its clay body.",
+      "negatives": "No realistic fur, No photo",
+      "shot_plan": "0-3s Fox sprints to edge; 3-8s Launches heroic leap slow motion over lava canyon; 8-15s Camera races beneath belly reveals depth chasm fully extended clay body",
+      "ideal_for": "Claymation heroic leap"
+    },
+    {
+      "id": "fantasy_wuxia_character_film",
+      "name": "Fantasy Wuxia Character Film",
+      "category": "Animation & Stylized Visuals",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": [
+        "Image2 as locked character reference: half-up long black hair, openwork silver crown, indigo ribbon, layered pale hanfu, translucent blue outer robe, deep-blue sash, silver floral fastener, long tassels",
+        "Image1 for storyboard order and pacing"
+      ],
+      "prompt_template": "Use Image 2 as the locked character reference. Preserve the half-up long black hair, openwork silver crown, indigo ribbon, layered pale hanfu, translucent blue outer robe, deep-blue sash, silver floral fastener, and long tassels. Use Image 1 for storyboard order and pacing.\n\nRender in high-quality 4K, 16:9 Chinese-inspired 3D with cinematic xianxia production value: intense, solemn, and shaped by destiny. Follow the storyboard beat by beat, with natural camera movement and seamless transitions—never a slideshow. Show the face only in close-up or extreme close-up. In wide shots, use back view, rear three-quarter view, or empty environment shots; never show a distant frontal face.",
+      "negatives": "No slideshow, No distant frontal face in wide shots",
+      "shot_plan": "0-4s Wide back view environment establishing; 4-8s Rear three-quarter; 8-12s Close-up face half-up hair silver crown; 12-15s Extreme close-up intense solemn",
+      "ideal_for": "Wuxia xianxia character film, hanfu preservation, face only close-up"
+    },
+    {
+      "id": "otome_male_lead_character_promo",
+      "name": "Otome Male Lead Character Promo",
+      "category": "Animation & Stylized Visuals",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": ["Image2 as strict identity reference: face, hairstyle, body proportions, costume design, material detail, polished otome-CG aesthetic"],
+      "prompt_template": "Create a character promo for a male lead in an otome game. Use Image 2 as a strict identity reference. Preserve the same face, hairstyle, body proportions, costume design, material detail, and polished otome-CG aesthetic throughout.",
+      "negatives": "No identity drift, No costume drift",
+      "shot_plan": "0-5s Medium full-body; 5-10s Close-up face hairstyle; 10-15s Material detail costume showcase polished otome-CG",
+      "ideal_for": "Otome game male lead promo"
+    },
+    {
+      "id": "first_person_tactical_gameplay",
+      "name": "First-Person Tactical Gameplay",
+      "category": "Animation & Stylized Visuals",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "1 image",
+      "reference_use": ["Image1 military base"],
+      "prompt_template": "Camera: first-person, eye level, handheld gameplay. Simulate a player operating a modern-warfare FPS, holding an assault rifle and advancing slowly around the perimeter of a military base. Move forward along a road beside cover, sweep the reticle across the passage ahead, pause to fire several rounds at a distant target, then continue pushing forward like authentic player-controlled footage.\n\nLighting: cool natural light across a modern military base, mixed with smoke and firelight. Keep the image photoreal and crisp, with AAA-quality weapons, materials, dust, and battlefield haze.\n\nCamera movement: subtle player-driven sway while moving; begin with a slow advance, make small checks left and right, add light recoil when firing, then continue forward steadily.",
+      "negatives": "No third-person, No unrealistic recoil",
+      "shot_plan": "0-4s Slow advance road beside cover reticle sweep; 4-8s Pause fire several rounds distant target recoil; 8-15s Continue pushing forward steady player sway",
+      "ideal_for": "FPS gameplay simulation, AAA weapons materials"
+    },
+    {
+      "id": "interactive_otome_game_transition",
+      "name": "Interactive Otome Game Transition",
+      "category": "Animation & Stylized Visuals",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "2 images boundary",
+      "reference_use": [
+        "Image1 is exact opening frame",
+        "Image2 is exact ending frame"
+      ],
+      "prompt_template": "Interactive Otome Game\n\nUse the first image as the exact opening frame and the second as the exact ending frame. Create a transition within a premium Chinese otome visual-novel interface, capturing an intimate backstage moment before and after a performance. Move naturally from 'Choose to watch his performance' to 'Han Xu reacts with intrigued interest after hearing the heroine.' Reveal UI copy, choices, and dialogue boxes with refined otome-game motion design. Keep transitions fluid and the romantic tension suggestive but restrained.",
+      "negatives": "No hard cut, No garbled UI",
+      "shot_plan": "0-4s Opening frame choose to watch performance UI; 4-10s Transition backstage intimate moment choices dialogue boxes appearing; 10-15s Ending frame Han Xu intrigued interest",
+      "ideal_for": "Otome visual-novel UI transition, backstage intimate"
+    },
+    {
+      "id": "character_driven_romantic_scene",
+      "name": "Character-Driven Romantic Scene",
+      "category": "Animation & Stylized Visuals",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": [
+        "Image1 for male lead: photoreal, tailored black dress shirt",
+        "Image2 for intimate red-and-black interior: dim low-saturation luxurious restrained softly defocused background red velvet sofa black-and-gold marble side table warm low light"
+      ],
+      "prompt_template": "Character-Driven Scene\n\nUse Image 1 for the male lead. Photoreal, cinematic live action, framed in a frontal close shot that stays on the leads' upper bodies. Keep the woman's face mostly out of frame; she wears a backless, midriff-baring red dress, with only occasional details of her neck, shoulders, arms, waist, hem, and hands. The man wears an impeccably tailored black dress shirt.\n\nSet the scene in the intimate red-and-black interior from Image 2: dim, low-saturation, luxurious, and restrained, with a softly defocused background. A red velvet sofa, black-and-gold marble side table, and warm low light create a mature, charged date-night atmosphere.\n\nThe man lounges on the red velvet sofa, leaning back with effortless composure. Beside him sits a cut-crystal tumbler holding amber whiskey and slowly melting ice, with fine condensation on the glass. Sound design: ice lightly tapping crystal, a faint cigar burn, subtle room air, clothing movement, and controlled breathing.",
+      "negatives": "No woman face fully visible, No bright interior",
+      "shot_plan": "0-5s Frontal close upper bodies, woman red dress out of frame details neck shoulders arms; 5-10s Red velvet sofa black gold marble side table low light; 10-15s Tumbler amber whiskey melting ice condensation ice tapping crystal cigar burn room air breathing",
+      "ideal_for": "Intimate date-night charged romantic, mature restrained"
+    },
+    {
+      "id": "multi_asset_cinematic_remix",
+      "name": "Multi-Asset Cinematic Remix",
+      "category": "Native Multimodal Reference - Multi-Asset",
+      "endpoint": "reference-to-video",
+      "reference_count": "6 images + 1 video",
+      "reference_use": [
+        "Images 1-6 as assets: characters, objects, locations - ignore framing",
+        "Reference Video 1 for shot rhythm, transition language, and music only - do not copy its subjects"
+      ],
+      "prompt_template": "Use Images 1-6 as assets. Match Reference Video 1 closely for shot rhythm, transition language, and music.\n\n[REFERENCE USE]\nImage1-Image6 define only available characters, objects, locations. Do not copy their framing.\nVideo1 defines shot rhythm, transition language, music only. Do not copy its subjects.\n\n[SCENE]\nCreate one coherent cinematic sequence using six image assets. Preserve each asset's defining appearance, keep subject count stable.\n\n[EDITING]\nMatch Video1's pace and transition grammar without recreating its story. Keep geography legible, every transition motivated.",
+      "negatives": "No framing copy from images, No subjects copy from Video1",
+      "shot_plan": "0-4s Establish with assets 1-2; 4-9s Escalate assets 3-4 with Video1 rhythm; 9-15s Resolve assets 5-6, transition grammar matched, music",
+      "ideal_for": "Cinematic remix 6 assets + reference video rhythm"
+    },
+    {
+      "id": "live_action_voxel_transformation",
+      "name": "Live-Action Voxel Transformation",
+      "category": "Native Multimodal Reference - Multi-Asset",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 image + 2 videos",
+      "reference_use": [
+        "Image1 as visual reference for 3D pixel-art voxel-block objects Minecraft style",
+        "Video1 as source: buildings pedestrians environment as photoreal live action - preserve",
+        "Video2 as overall target style"
+      ],
+      "prompt_template": "Preserve the buildings, pedestrians, and overall environment in Video 1 as photoreal live action. Transform only the trees and cars into 3D pixel-art or voxel-block objects in the style of Minecraft, using Image 1 as the visual reference. Keep their motion physically correct, and preserve the real environment's shadows and transmitted light. Use Video 2 as the overall target.",
+      "negatives": "No building pedestrian transformation, No shadow loss",
+      "shot_plan": "0-15s Preserve buildings pedestrians photoreal, trees cars transform to voxel-block Minecraft style motion physically correct shadows transmitted light preserved",
+      "ideal_for": "Voxel transformation only trees cars, preserve environment"
+    },
+    {
+      "id": "macro_coffee_to_fluid_transition",
+      "name": "Macro Coffee-to-Fluid Transition",
+      "category": "Native Multimodal Reference - Multi-Asset",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images",
+      "reference_use": [
+        "Image1 defines coffee surface: milk foam, cocoa dust, bubbles, dark liquid",
+        "Image2 defines destination desert and its wind-carved dunes"
+      ],
+      "prompt_template": "@Image 1: Push in rapidly toward the milk foam, cocoa particles, and dark liquid texture on the coffee until particles, bubbles, and ripples fill the frame. Keep the macro photography realistic, with extremely shallow depth of field and fine powder drifting through backlight. Let the surface feel suspended between granular sand and fluid.\n\nAt the exact moment when the cocoa particles, foam contours, and coffee swirl closely resemble the dune ridges, wind-carved textures, and airborne sand in @Image 2, transition seamlessly into the desert landscape. Continue pushing forward until the full dunes from @Image 2 are revealed.\n\nNo tearing, black frames, hard cuts, obvious VFX, or compositing seams. Keep it photoreal, quiet, and restrained—as though one granular material naturally expands from the microscopic coffee surface into a vast desert. One continuous shot with no visible edit.",
+      "negatives": "No tearing, black frames, hard cuts, obvious VFX, compositing seams",
+      "shot_plan": "0-5s Push in rapidly milk foam cocoa particles dark liquid shallow DOF fine powder backlight; 5-8s Moment particles foam contours swirl resemble dune ridges airborne sand; 8-15s Seamlessly transform desert landscape push forward full dunes reveal one continuous shot",
+      "ideal_for": "Macro texture transition coffee to desert, seamless, no cut"
+    },
+    {
+      "id": "character_swap_with_performance_reference",
+      "name": "Character Swap with Performance Reference",
+      "category": "Character, Motion & Camera Reference",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 image + 1 video",
+      "reference_use": [
+        "Image1 defines new characters identities and wardrobe - ignore background pose",
+        "Video1 defines body motion, expressions, interaction timing, camera framing only - do not use its people"
+      ],
+      "prompt_template": "Match the character motion, expressions, and performance timing in Image 1 closely to Input Video 1.\n\nAt the sink on the right side of frame, the man hands a washed plate to the woman on the left. He turns, then suddenly flicks dish-soap foam at her with his right hand. Startled, she immediately retaliates. They laugh, dodge, and playfully throw foam back and forth.\n\nKeep both identities stable, preserve left/right geography, and make foam, wet surfaces, shadows, and reactions physically believable.",
+      "negatives": "No identity from Video1, No left/right swap",
+      "shot_plan": "0-4s Sink right man hands washed plate to woman left establishing; 4-8s Turns flicks foam right hand; 8-15s Startled retaliates laugh dodge playful foam back forth foam wet surfaces shadows believable",
+      "ideal_for": "Character swap preserving motion timing, foam fight example"
+    },
+    {
+      "id": "street_dance_motion_transfer",
+      "name": "Street Dance Motion Transfer",
+      "category": "Character, Motion & Camera Reference",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 images + 1 video motion ref",
+      "reference_use": [
+        "Video1 as motion reference for street-dance performance",
+        "Images 1 and 2 as character references - preserve identities"
+      ],
+      "prompt_template": "Use Video 1 as the motion reference for a street-dance performance. Use Images 1 and 2 as the character references.\n\nPreserve both identities exactly: face, hair, clothing, body proportions. Do not inherit Video1's people, wardrobe, or location. Match dance motion, timing, and rhythm from Video1 with new characters.\n\nKeep screen direction stable, maintain left/right geography, make fabric and hair motion physically believable.",
+      "negatives": "No Video1 people wardrobe location, No identity drift",
+      "shot_plan": "0-4s Establish two characters with new identities; 4-9s Match street-dance motion timing rhythm from Video1; 9-15s Continue dance fabric hair motion believable, geography stable",
+      "ideal_for": "Dance motion transfer to new characters"
+    },
+    {
+      "id": "capybara_motion_recreation",
+      "name": "Capybara Motion Recreation - Exact Path",
+      "category": "Character, Motion & Camera Reference",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video motion path",
+      "reference_use": [
+        "Video1 is sole reference for motion paths, timing, locked-off wide camera - replace 3 suited men with 3 photoreal capybaras, preserve action order exactly"
+      ],
+      "prompt_template": "Motion reference for a DIY reaction clip\n\nMatch the action in Video 1 from a locked-off wide camera. Replace the three suited men with three highly photoreal capybaras. Preserve the original movement path exactly: all three drop quickly to the floor; the left capybara jumps to center; the center capybara rolls to the far left; the new center capybara rolls to the far right; the right capybara jumps to center; finally, the center capybara jumps onto the other two, forming a pyramid. Keep the camera fixed and integrate fur, lighting, and shadows realistically into the scene.\n\nKeep subject count exactly three, preserve left/right geography, ordered positions, final pyramid arrangement. No extra animals.",
+      "negatives": "No extra animals, No position swaps, No camera move",
+      "shot_plan": "0-2s All three drop quickly to floor; 2-4s Left jumps to center, center rolls far left; 4-7s New center rolls far right, right jumps to center; 7-12s Center jumps onto other two forming pyramid; 12-15s Hold pyramid fur lighting shadows realistic fixed camera",
+      "ideal_for": "Exact path ordering, pyramid formation, capybaras"
+    },
+    {
+      "id": "voice_clone_dialogue_transfer",
+      "name": "Voice Clone Dialogue Transfer",
+      "category": "Voice Cloning & Transfer",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video + 1 audio voice timbre",
+      "reference_use": [
+        "Video1 defines character, scene, camera, visible performance",
+        "Audio1 defines only character's voice timbre, cadence, emotional delivery"
+      ],
+      "prompt_template": "The character says: 'Follow the wind, live free. Leave worries behind, enjoy the moment.' Match the voice in Audio 1.\n\nMatch Audio1's voice while preserving clear lip sync, original character identity, native stereo ambience. No subtitles, extra speech, voice drift.",
+      "negatives": "No subtitles, No extra speech, No voice drift",
+      "shot_plan": "0-15s Character says exact line with Audio1 timbre cadence emotional delivery, lip sync accurate, identity preserved, stereo ambience",
+      "ideal_for": "Voice cloning, say exact line with reference timbre"
+    },
+    {
+      "id": "cat_to_dog_replacement",
+      "name": "Cat-to-Dog Replacement",
+      "category": "Precise Multimodal Editing - Character & Object",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 source video",
+      "reference_use": ["Source video as master, replace cat with dog"],
+      "prompt_template": "Replace the cat in the video with a dog.\n\nPreserve everything else: background, lighting, camera movement, other subjects, timing, ambience. Make dog motion physically plausible, shadows and lighting match original, fur integrates naturally.",
+      "negatives": "No background change, No other subject change",
+      "shot_plan": "0-15s Replace cat with dog, preserve background lighting camera other subjects timing ambience, dog motion plausible",
+      "ideal_for": "Simple object replacement, preserve rest"
+    },
+    {
+      "id": "add_character_in_sync",
+      "name": "Add a Character in Sync",
+      "category": "Precise Multimodal Editing - Character & Object",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 source video",
+      "reference_use": ["Source video as master"],
+      "prompt_template": "Add one person on the left side of frame wearing the same team uniform and moving in sync with the others.\n\nPreserve existing characters identities, motion timing, camera, background, lighting, ambience. New person motion synchronized with group, uniform same as team, shadows lighting match.",
+      "negatives": "No existing character change",
+      "shot_plan": "0-15s Add one person left side same team uniform moving in sync with others, preserve existing",
+      "ideal_for": "Add character synchronized"
+    },
+    {
+      "id": "subject_wardrobe_replacement",
+      "name": "Subject & Wardrobe Replacement",
+      "category": "Precise Multimodal Editing - Character & Object",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video + 2 images",
+      "reference_use": [
+        "Video1 source",
+        "Image1 golden retriever replacement for child",
+        "Image2 denim jacket replacement for khaki jacket"
+      ],
+      "prompt_template": "Precise Subject and Wardrobe Replacement\n\nReplace the child at the back of Video 1 with the golden retriever from Image 1. Replace the khaki jacket worn by the child on the far left with the denim jacket from Image 2.\n\nPreserve all other identities, background, camera, timing, lighting, ambience.",
+      "negatives": "No other changes",
+      "shot_plan": "0-15s Replace child back with golden retriever Image1, replace khaki jacket far left with denim jacket Image2, preserve rest",
+      "ideal_for": "Subject + wardrobe replacement with image references"
+    },
+    {
+      "id": "green_screen_environment_replacement",
+      "name": "Green-Screen Environment Replacement",
+      "category": "Scene & VFX Editing",
+      "endpoint": "reference-to-video",
+      "reference_count": "2 videos",
+      "reference_use": [
+        "Video1 source with green screen, subject performance foreground timing camera duration",
+        "Video2 target fairy tale environment atmosphere lighting style"
+      ],
+      "prompt_template": "Remove the green-screen background from Video 1 and replace it with a fairy-tale environment similar to Video 2. Make every background element respond correctly to the subject's movement, and relight the subject so they blend naturally into the new scene.\n\nPreserve foreground identity, hair and fabric edges, gesture timing, scale, camera, and duration unchanged. No green spill or altered performance.",
+      "negatives": "No green spill, No altered performance, No scale change",
+      "shot_plan": "0-15s Remove green background Video1, replace with fairy tale environment Video2, background parallax respond to subject, relight subject blend naturally, preserve foreground edges timing scale camera duration",
+      "ideal_for": "Green-screen to fairy tale with relight and parallax"
+    },
+    {
+      "id": "day_to_night_relighting",
+      "name": "Day-to-Night Relighting",
+      "category": "Scene & VFX Editing",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video",
+      "reference_use": ["Source video as master"],
+      "prompt_template": "Relighting\n\nChange the lighting in the reference video from daytime to night.\n\nPreserve subject identity, motion timing, camera, background geometry, ambience, duration. Change lighting to night: add moonlight, practical lights, shadows, adjust exposure, keep realistic.",
+      "negatives": "No identity change, No motion change",
+      "shot_plan": "0-15s Relight daytime to night moonlight practical lights shadows exposure realistic, preserve identity motion camera background",
+      "ideal_for": "Day to night relighting"
+    },
+    {
+      "id": "window_view_replacement",
+      "name": "Window View Replacement",
+      "category": "Scene & VFX Editing",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video + 1 image",
+      "reference_use": [
+        "Video1 source window view",
+        "Image1 target outside view"
+      ],
+      "prompt_template": "Live-action environment replacement\n\nReplace the view outside the window in Video 1 with Image 1.\n\nPreserve interior, subject identity, motion timing, camera, lighting interior, ambience. Make outside view from Image1 integrate naturally with window frame, parallax responds to camera subtle, relight window edge to match new outside.",
+      "negatives": "No interior change",
+      "shot_plan": "0-15s Replace view outside window Video1 with Image1, interior preserved, parallax, edge relight",
+      "ideal_for": "Window view replacement"
+    },
+    {
+      "id": "dialogue_performance_replacement",
+      "name": "Dialogue & Performance Replacement",
+      "category": "Dialogue & Voice Editing",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video + 1 audio",
+      "reference_use": [
+        "Video1 source woman scene camera interaction duration",
+        "Audio1 replacement line voice timing emotional delivery"
+      ],
+      "prompt_template": "In Video 1, replace the woman's line—'There's no way we can be together. It's not that I don't love you; we simply can't make it to the end.'—with the line from Audio 1: 'Please don't go. This time, let's not let each other go.' Adjust the performance subtly to match the new dialogue.\n\nPreserve both identities, other person's performance, setting, camera, edit rhythm, ambience, total duration. Maintain accurate lip sync.",
+      "negatives": "No other performance change, No setting camera change",
+      "shot_plan": "0-15s Replace woman line with Audio1 line, adjust facial expression breath subtly to support plea, preserve both identities other performance setting camera rhythm ambience duration lip sync accurate",
+      "ideal_for": "Dialogue replacement with performance adjustment"
+    },
+    {
+      "id": "multi_element_scene_editing",
+      "name": "Multi-Element Scene Editing",
+      "category": "Precise Instruction Adherence",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video source",
+      "reference_use": ["Source video as sole master"],
+      "prompt_template": "In the reference video: replace the newspaper with a green hardcover book; replace the chair with a red sofa; remove the subject's sunglasses and reveal a clear face; remove the burning-car effect and restore the vehicle to normal; replace the photograph taken from the coat with a small black notebook; and add a tree on the left side of frame.\n\nPreserve every actor's identity, action timing, occlusion, eyeline, camera move, scene layout, dialogue, and ambience. Do not modify anything else.",
+      "negatives": "Do not modify anything else",
+      "shot_plan": "0-15s Replace newspaper green hardcover book, chair red sofa, remove sunglasses reveal face, remove burning-car effect restore vehicle normal, replace photograph small black notebook, add tree left side frame, preserve actors identity action timing occlusion eyeline camera layout dialogue ambience",
+      "ideal_for": "Multiple localized edits one pass, preserve rest"
+    },
+    {
+      "id": "product_sign_dialogue_replacement",
+      "name": "Product, Sign & Dialogue Replacement",
+      "category": "Precise Instruction Adherence",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video",
+      "reference_use": ["Source video as master"],
+      "prompt_template": "In the reference video, replace the canned drink shown at the beginning with Coca-Cola. Change the illuminated 'FamilyMart' convenience-store sign in the background to 'HUHUI.' At the end, replace every snack in the plastic bag with cans of Coca-Cola, and change the final line from 'I bought a few snacks' to 'I bought a whole bunch of Coke.'\n\nPreserve background geometry except sign change, actor identity, camera, timing, ambience. Make product replacement physically plausible, lighting match.",
+      "negatives": "No other background changes",
+      "shot_plan": "0-4s Replace canned drink beginning with Coca-Cola; 4-8s Replace FamilyMart sign background to HUHUI illuminated; 8-12s Preserve rest; 12-15s Replace snacks plastic bag with Coca-Cola cans, final line change to 'I bought a whole bunch of Coke'",
+      "ideal_for": "Product placement replacement, sign change, dialogue change"
+    },
+    {
+      "id": "precision_costume_swap",
+      "name": "Precision Costume Swap",
+      "category": "Precise Instruction Adherence",
+      "endpoint": "first-and-last-frame",
+      "reference_count": "1 image boundary",
+      "reference_use": ["Image1 stage with two magicians"],
+      "prompt_template": "Two magicians stand onstage facing the audience and perform a 'swap' illusion. They wave their wands simultaneously and smoke rises. When it clears, their suit colors have exchanged: the magician on the left now wears white, and the one on the right now wears black. Their glove colors do not change. They bow; the red curtain closes behind them and gradually shifts from deep red to dark blue.",
+      "negatives": "No glove color change",
+      "shot_plan": "0-3s Two magicians onstage facing audience; 3-7s Wave wands simultaneously smoke rises; 7-11s Smoke clears suit colors exchanged left white right black gloves unchanged; 11-15s Bow red curtain closes shifts deep red to dark blue",
+      "ideal_for": "Precision costume swap magicians illusion"
+    },
+    {
+      "id": "hand_drawn_romance_vfx",
+      "name": "Hand-Drawn Romance VFX",
+      "category": "Precise Instruction Adherence",
+      "endpoint": "reference-to-video",
+      "reference_count": "1 video + 1 image VFX ref",
+      "reference_use": [
+        "Video1 source two people",
+        "Image1 hand-drawn marks reference orange-yellow"
+      ],
+      "prompt_template": "Creative interpretation + animated graphic effects\n\nAdd orange-yellow hand-drawn marks like Image 1 around the two people in Video 1. As they move closer, the marks multiply and build from tiny sparks into bright radiance. When they kiss, introduce pink brushstrokes.\n\nPreserve both identities, background, camera, timing, ambience.",
+      "negatives": "No identity change",
+      "shot_plan": "0-4s Add orange-yellow hand-drawn marks around two people Video1 tiny sparks; 4-8s Move closer marks multiply build bright radiance; 8-15s Kiss introduce pink brushstrokes, preserve identities background camera",
+      "ideal_for": "Hand-drawn VFX buildup to kiss, romance"
+    }
+  ]
+}

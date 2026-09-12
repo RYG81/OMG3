@@ -1,0 +1,26 @@
+{
+    "image_prompts": {
+        "Subject / Identity": "Focus exclusively on describing the main subject's appearance, facial features, clothing, distinctive features like bracelet, tattoos, and overall identity.",
+        "Comprehensive": "Analyze the entire image in extreme detail (subjects, environment, lighting, composition, mood, screen geography left/right/center, foreground/mid/background).",
+        "Action / Emotion": "Analyze only the physical actions, body language, posture, gaze, and facial expressions, emotional progression.",
+        "Face & Expression Focus": "Analyze the facial features, gaze, micro-expressions intimately, eyes, mouth, emotional state.",
+        "Prop & Object Interaction": "Focus purely on what objects the subject is holding or interacting with, and how they interact, prop ownership.",
+        "Lighting & Camera": "Describe only the camera angle/framing (e.g., close-up, wide shot, medium) and the ambient lighting setup (natural, neon, volumetric, practicals).",
+        "Cinematic Composition": "Analyze framing techniques, depth of field, foreground/background separation, lens characteristics (wide 24mm, telephoto 85mm, macro), screen geography.",
+        "Style & Aesthetics": "Focus solely on artistic style, color palette, texture, grain, mood, photographic vs anime vs 3D.",
+        "Color Palette & Texture": "Focus exclusively on dominating colors, contrast ratios, visual textures, materials.",
+        "Identity Lock": "Focus on identity preservation: face, hair, body proportions, clothing, distinctive props like bracelet, to lock for continuity, no drift.",
+        "Screen Geography": "Focus on screen geography: who/what is frame left/right/center, foreground/mid/background, left/right relationships stable, eyelines.",
+        "Wardrobe / Prop": "Focus on wardrobe, clothing, accessories, props, distinctive features for continuity locks."
+    },
+    "video_prompts": {
+        "Motion Focus": "Focus strictly on choreography, speed, physical movement executed by subject, action order.",
+        "Comprehensive": "Analyze sequential pacing, camera movement, subject motion across all keyframes, shot rhythm, transitions.",
+        "Camera Tracking": "Focus entirely on tracking how virtual camera moves (panning, zooming, dollying, tracking, static, shake).",
+        "Temporal Flow": "Analyze overall pacing, transitions, scene progression across extracted frames, shot list timing.",
+        "Physics & Momentum": "Analyze realistic physics, gravity, weight, momentum of moving subjects/objects, contact, shadows.",
+        "Background Dynamics": "Focus exclusively on what is moving in environment/background, ignoring main subject.",
+        "Condition Strength": "Analyze how strongly keyframe/reference conditioning should be trusted - anchor strength, visual cond noise aug, audio cond noise aug.",
+        "Stereo Guard": "Check audio reference - is it stereo 32kHz? Mono would crash sampler, needs duplication."
+    }
+}
