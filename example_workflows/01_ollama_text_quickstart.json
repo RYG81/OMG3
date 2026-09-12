@@ -1,0 +1,124 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "OllamaModelLoader",
+      "pos": [
+        60,
+        100
+      ],
+      "size": [
+        320,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model_name",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaModelLoader"
+      },
+      "widgets_values": [
+        "http://127.0.0.1:11434",
+        "llama3.2:latest",
+        "5m",
+        0.7,
+        0.9,
+        40,
+        1.1,
+        -1,
+        8192
+      ]
+    },
+    {
+      "id": 2,
+      "type": "OllamaTextGenerate",
+      "pos": [
+        460,
+        100
+      ],
+      "size": [
+        390,
+        360
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generated_text",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "prompt_passthrough",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaTextGenerate"
+      },
+      "widgets_values": [
+        "Write a concise cinematic image prompt for a lighthouse during a storm.",
+        "You are a precise visual prompt writer.",
+        512,
+        -1.0,
+        "text",
+        false,
+        "",
+        "",
+        "off"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "OLLAMA_MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [
+        80,
+        80
+      ]
+    }
+  },
+  "version": 0.4
+}

@@ -1,0 +1,335 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "OllamaModelLoader",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        320,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "links": [
+            2,
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model_name",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaModelLoader"
+      },
+      "widgets_values": [
+        "http://127.0.0.1:11434",
+        "nomic-embed-text:latest",
+        "5m",
+        0.0,
+        0.9,
+        40,
+        1.1,
+        -1,
+        8192
+      ]
+    },
+    {
+      "id": 2,
+      "type": "OllamaDocumentsFromText",
+      "pos": [
+        40,
+        430
+      ],
+      "size": [
+        360,
+        260
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "documents",
+          "type": "OMG_DOCUMENTS",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "documents_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "document_count",
+          "type": "INT",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "character_count",
+          "type": "INT",
+          "links": null,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaDocumentsFromText"
+      },
+      "widgets_values": [
+        "The Tidal Archive is built from black basalt and white ceramic. Its inland sea glows cyan after sunset. Amber lanterns provide warm practical light.",
+        "world-notes.md"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "OllamaRAGIndexBuild",
+      "pos": [
+        470,
+        220
+      ],
+      "size": [
+        390,
+        330
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": 2
+        },
+        {
+          "name": "documents",
+          "type": "OMG_DOCUMENTS",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "rag_index",
+          "type": "OMG_RAG_INDEX",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "index_summary_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "chunk_count",
+          "type": "INT",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "dimensions",
+          "type": "INT",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "sources",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 4
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaRAGIndexBuild"
+      },
+      "widgets_values": [
+        1200,
+        150,
+        256,
+        16,
+        "use"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "OllamaRAGSearch",
+      "pos": [
+        930,
+        220
+      ],
+      "size": [
+        390,
+        320
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": 3
+        },
+        {
+          "name": "rag_index",
+          "type": "OMG_RAG_INDEX",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "context",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "citations_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "scores",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "result_count",
+          "type": "INT",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "top_source",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 4
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaRAGSearch"
+      },
+      "widgets_values": [
+        "What materials and lighting define the Tidal Archive?",
+        5,
+        0.0,
+        12000
+      ]
+    },
+    {
+      "id": 5,
+      "type": "OllamaNodesDebug",
+      "pos": [
+        1380,
+        250
+      ],
+      "size": [
+        320,
+        230
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value_str",
+          "type": "STRING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "debug_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaNodesDebug"
+      },
+      "widgets_values": [
+        "Retrieved RAG Context"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      1,
+      "OMG_DOCUMENTS"
+    ],
+    [
+      2,
+      1,
+      0,
+      3,
+      0,
+      "OLLAMA_MODEL"
+    ],
+    [
+      3,
+      1,
+      0,
+      4,
+      0,
+      "OLLAMA_MODEL"
+    ],
+    [
+      4,
+      3,
+      0,
+      4,
+      1,
+      "OMG_RAG_INDEX"
+    ],
+    [
+      5,
+      4,
+      0,
+      5,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [
+        80,
+        80
+      ]
+    }
+  },
+  "version": 0.4
+}

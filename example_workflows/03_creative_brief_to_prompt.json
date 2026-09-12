@@ -1,0 +1,257 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "OllamaModelLoader",
+      "pos": [
+        60,
+        100
+      ],
+      "size": [
+        320,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model_name",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaModelLoader"
+      },
+      "widgets_values": [
+        "http://127.0.0.1:11434",
+        "llama3.2:latest",
+        "5m",
+        0.7,
+        0.9,
+        40,
+        1.1,
+        -1,
+        8192
+      ]
+    },
+    {
+      "id": 2,
+      "type": "OllamaCreativeBriefCompiler",
+      "pos": [
+        440,
+        60
+      ],
+      "size": [
+        430,
+        450
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "creative_brief",
+          "type": "OMG_CREATIVE_BRIEF",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "brief_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "summary",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "is_valid",
+          "type": "BOOLEAN",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "provenance_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaCreativeBriefCompiler"
+      },
+      "widgets_values": [
+        "A lone expedition pilot discovers a luminous underground forest.",
+        "Flux",
+        "16:9",
+        "cinematic grounded science fiction",
+        "same pilot identity and orange flight suit",
+        "production",
+        "use"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "OllamaCreativeBriefToPrompt",
+      "pos": [
+        940,
+        120
+      ],
+      "size": [
+        360,
+        240
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "creative_brief",
+          "type": "OMG_CREATIVE_BRIEF",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "brief_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaCreativeBriefToPrompt"
+      },
+      "widgets_values": [
+        "SDXL",
+        ""
+      ]
+    },
+    {
+      "id": 4,
+      "type": "OllamaNodesDebug",
+      "pos": [
+        1360,
+        140
+      ],
+      "size": [
+        320,
+        230
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value_str",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "debug_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaNodesDebug"
+      },
+      "widgets_values": [
+        "Compiled Creative Brief Prompt"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "OLLAMA_MODEL"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "OMG_CREATIVE_BRIEF"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [
+        80,
+        80
+      ]
+    }
+  },
+  "version": 0.4
+}

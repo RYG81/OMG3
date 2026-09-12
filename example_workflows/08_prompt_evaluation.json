@@ -1,0 +1,306 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "OllamaModelLoader",
+      "pos": [
+        30,
+        80
+      ],
+      "size": [
+        320,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model_name",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaModelLoader"
+      },
+      "widgets_values": [
+        "http://127.0.0.1:11434",
+        "llama3.2:latest",
+        "5m",
+        0.4,
+        0.9,
+        40,
+        1.1,
+        -1,
+        8192
+      ]
+    },
+    {
+      "id": 2,
+      "type": "OllamaPromptEvaluator",
+      "pos": [
+        420,
+        80
+      ],
+      "size": [
+        440,
+        480
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "evaluation",
+          "type": "OMG_EVALUATION",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "evaluation_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "overall_score",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "verdict",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "strengths",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "issues_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "improved_prompt",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 6
+        },
+        {
+          "name": "is_valid",
+          "type": "BOOLEAN",
+          "links": null,
+          "slot_index": 7
+        },
+        {
+          "name": "validation_report",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 8
+        },
+        {
+          "name": "provenance_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 9
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaPromptEvaluator"
+      },
+      "widgets_values": [
+        "A cinematic portrait of a pilot in soft side light.",
+        "Flux",
+        "A coherent production portrait with clear identity and lighting.",
+        "balanced",
+        "use"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "OllamaEvaluationInspect",
+      "pos": [
+        930,
+        60
+      ],
+      "size": [
+        360,
+        350
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "evaluation",
+          "type": "OMG_EVALUATION",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "evaluation_type",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "target_model",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "overall_score",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "verdict",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "criteria_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "strengths",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "issues_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 6
+        },
+        {
+          "name": "recommendation",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 7
+        },
+        {
+          "name": "confidence",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 8
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaEvaluationInspect"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 4,
+      "type": "OllamaNodesDebug",
+      "pos": [
+        1380,
+        160
+      ],
+      "size": [
+        320,
+        220
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value_str",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "debug_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaNodesDebug"
+      },
+      "widgets_values": [
+        "Improved Prompt"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "OLLAMA_MODEL"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "OMG_EVALUATION"
+    ],
+    [
+      3,
+      2,
+      6,
+      4,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.78,
+      "offset": [
+        70,
+        70
+      ]
+    }
+  },
+  "version": 0.4
+}

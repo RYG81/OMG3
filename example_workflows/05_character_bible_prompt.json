@@ -1,0 +1,267 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "OllamaModelLoader",
+      "pos": [
+        30,
+        80
+      ],
+      "size": [
+        320,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "model_name",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaModelLoader"
+      },
+      "widgets_values": [
+        "http://127.0.0.1:11434",
+        "llama3.2:latest",
+        "5m",
+        0.4,
+        0.9,
+        40,
+        1.1,
+        -1,
+        8192
+      ]
+    },
+    {
+      "id": 2,
+      "type": "OllamaCharacterBibleCreate",
+      "pos": [
+        400,
+        60
+      ],
+      "size": [
+        440,
+        450
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ollama_model",
+          "type": "OLLAMA_MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "character_bible",
+          "type": "OMG_CHARACTER_BIBLE",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "bible_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "master_prompt",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "compact_anchors",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "is_valid",
+          "type": "BOOLEAN",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "provenance_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaCharacterBibleCreate"
+      },
+      "widgets_values": [
+        "Veteran expedition pilot with a short silver undercut, amber eyes, a brow scar, and an orange technical flight suit.",
+        "Mira Vale",
+        "Cinematic",
+        "Flux",
+        "production lock",
+        "Keep the brow scar, eye color, hair silhouette, and proportions fixed.",
+        "use"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "OllamaCharacterBibleToPrompt",
+      "pos": [
+        920,
+        100
+      ],
+      "size": [
+        380,
+        300
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "character_bible",
+          "type": "OMG_CHARACTER_BIBLE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive_prompt",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative_prompt",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "continuity_locks",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "bible_json",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaCharacterBibleToPrompt"
+      },
+      "widgets_values": [
+        "Flux",
+        "inside a luminous underground forest",
+        "",
+        "walking cautiously",
+        "focused curiosity",
+        ""
+      ]
+    },
+    {
+      "id": 4,
+      "type": "OllamaNodesDebug",
+      "pos": [
+        1380,
+        140
+      ],
+      "size": [
+        320,
+        220
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value_str",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "debug_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaNodesDebug"
+      },
+      "widgets_values": [
+        "Character Bible Prompt"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "OLLAMA_MODEL"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "OMG_CHARACTER_BIBLE"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.78,
+      "offset": [
+        70,
+        70
+      ]
+    }
+  },
+  "version": 0.4
+}
